@@ -28,6 +28,7 @@
     "@nestjs/websockets": "^11.1.25",
     "@prisma/adapter-mariadb": "^7.8.0",
     "@prisma/client": "^7.8.0",
+    "es-toolkit": "^1.47.0",
     "reflect-metadata": "^0.2.2",
     "rxjs": "^7.8.1",
     "zod": "^4.4.3"

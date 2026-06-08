@@ -3,11 +3,24 @@ import { PrismaService } from 'src/prisma.service';
 import { Player } from '../generated/prisma/client';
 import { PlayerSchema, PlayerDetailRes } from './schema/player.schema';
 import { UnitType } from './player.const';
-import { getAttackCooldown, getAttackRange, getHp, getSpeed } from './tool';
+import {
+  getAggro,
+  getAtk,
+  getAtkSpeed,
+  getAttackRange,
+  getCrit,
+  getCritDmg,
+  getCritDmgRes,
+  getCritRes,
+  getDef,
+  getHp,
+  getMp,
+  getSpeed,
+} from './tool';
 
 @Injectable()
 export class PlayerService {
-  constructor(private prisma: PrismaService) {}
+  constructor(private readonly prisma: PrismaService) {}
 
   async getPlayer(playerId: bigint): Promise<Player> {
     return this.prisma.player.findUniqueOrThrow({
@@ -30,9 +43,17 @@ export class PlayerService {
         type: UnitType.PLAYER,
         spriteFrames: player.job,
         hp: getHp(player),
+        mp: getMp(player),
         speed: getSpeed(player),
-        attackRange: getAttackRange(player),
-        attackCooldown: getAttackCooldown(player),
+        atkRange: getAttackRange(player),
+        atkSpeed: getAtkSpeed(player),
+        atk: getAtk(player),
+        def: getDef(player),
+        aggro: getAggro(player),
+        crit: getCrit(player),
+        critDmg: getCritDmg(player),
+        critRes: getCritRes(player),
+        critDmgRes: getCritDmgRes(player),
       };
       return detail;
     });
