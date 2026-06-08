@@ -1,0 +1,58 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+// Get a free hosted Postgres database in seconds: `npx create-db`
+
+generator client {
+  provider     = "prisma-client"
+  output       = "../src/generated/prisma"
+  moduleFormat = "cjs"
+}
+
+datasource db {
+  provider = "mysql"
+}
+
+model Player {
+  id BigInt @id @default(autoincrement()) @db.UnsignedBigInt
+
+  accountId BigInt @unique(map: "uk_player_account_id") @map("account_id") @db.UnsignedBigInt
+
+  nickname String @db.VarChar(20)
+  job      String @db.VarChar(20)
+
+  level Int    @default(1) @db.UnsignedSmallInt
+  exp   BigInt @default(0) @db.UnsignedBigInt
+
+  cash BigInt @default(0) @db.UnsignedBigInt
+
+  /// 0正常 1禁言 2封号
+  status Int @default(0) @db.UnsignedTinyInt
+
+  /// 登录次数
+  loginCount Int @default(0) @map("login_count") @db.UnsignedInt
+
+  /// 最后登录时间
+  lastLoginAt DateTime? @map("last_login_at") @db.DateTime(0)
+
+  /// 当前或最近一次在线时间
+  onlineAt DateTime? @map("online_at") @db.DateTime(0)
+
+  attrTalent      Int @default(0) @map("attr_talent") @db.UnsignedSmallInt
+  attrPhysical    Int @default(0) @map("attr_physical") @db.UnsignedSmallInt
+  attrLogic       Int @default(0) @map("attr_logic") @db.UnsignedSmallInt
+  attrImagination Int @default(0) @map("attr_imagination") @db.UnsignedSmallInt
+  attrBoldness    Int @default(0) @map("attr_boldness") @db.UnsignedSmallInt
+  attrCharm       Int @default(0) @map("attr_charm") @db.UnsignedSmallInt
+  attrPoint       Int @default(0) @map("attr_point") @db.UnsignedSmallInt
+
+  createdAt DateTime @default(now()) @map("created_at") @db.DateTime(0)
+
+  updatedAt DateTime @updatedAt @map("updated_at") @db.DateTime(0)
+
+  deletedAt DateTime? @map("deleted_at") @db.DateTime(0)
+
+  @@index([job], map: "idx_player_job")
+  @@index([deletedAt], map: "idx_player_deleted_at")
+  @@map("player")
+}
