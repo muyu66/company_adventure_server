@@ -5,6 +5,7 @@ import { Monster } from 'src/generated/prisma/client';
 import { UnitType } from 'src/player/player.const';
 import { UnitInfoRes, UnitInfoSchema } from 'src/player/schema/player.schema';
 import { PrismaService } from 'src/prisma.service';
+import { makeId } from 'src/tool';
 
 @Injectable()
 export class BattleService {
@@ -41,10 +42,14 @@ export class BattleService {
     );
 
     return randomMonsters.map((monster) => {
-      const unit = UnitInfoSchema.parse(monster);
-      unit.team = 2;
-      unit.type = UnitType.MONSTER;
-      return unit;
+      return UnitInfoSchema.parse({
+        ...monster,
+        id: 'm_' + makeId(5),
+        mp: 0,
+        aggro: 0,
+        team: 2,
+        type: UnitType.MONSTER,
+      });
     });
   }
 }

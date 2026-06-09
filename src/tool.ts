@@ -1,5 +1,8 @@
 import { Player } from 'src/generated/prisma/client';
-import { Job } from './player.const';
+import { customAlphabet } from 'nanoid';
+import { Job } from './player/player.const';
+
+const generateRandomId = customAlphabet('1234567890qwertyuiopasdfghjklzxcvbnm');
 
 /**
  * 计算HP
@@ -163,8 +166,16 @@ export function getAttackRange(player: Player): number {
 export function getAtkSpeed(player: Player): number {
   switch (player.job) {
     case Job.CODER.toString():
-      return 1;
+      return 100;
     default:
-      return 1;
+      return 100;
   }
+}
+
+/**
+ * 生成随机ID
+ * @returns
+ */
+export function makeId(size: number) {
+  return generateRandomId(size);
 }

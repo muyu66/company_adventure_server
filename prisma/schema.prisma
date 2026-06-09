@@ -18,8 +18,8 @@ model Player {
 
   accountId BigInt @map("account_id") @db.UnsignedBigInt
 
-  nickname String @db.VarChar(20)
-  job      String @db.VarChar(20)
+  name String @db.VarChar(20)
+  job  String @db.VarChar(20)
 
   level Int    @default(1) @db.UnsignedSmallInt
   exp   BigInt @default(0) @db.UnsignedBigInt

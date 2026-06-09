@@ -76,7 +76,7 @@ export type TransactionIsolationLevel = (typeof TransactionIsolationLevel)[keyof
 export const PlayerScalarFieldEnum = {
   id: 'id',
   accountId: 'accountId',
-  nickname: 'nickname',
+  name: 'name',
   job: 'job',
   level: 'level',
   exp: 'exp',
@@ -179,7 +179,7 @@ export type NullsOrder = (typeof NullsOrder)[keyof typeof NullsOrder]
 
 
 export const PlayerOrderByRelevanceFieldEnum = {
-  nickname: 'nickname',
+  name: 'name',
   job: 'job'
 } as const
 

@@ -65,7 +65,7 @@ export type PlayerSumAggregateOutputType = {
 export type PlayerMinAggregateOutputType = {
   id: bigint | null
   accountId: bigint | null
-  nickname: string | null
+  name: string | null
   job: string | null
   level: number | null
   exp: bigint | null
@@ -90,7 +90,7 @@ export type PlayerMinAggregateOutputType = {
 export type PlayerMaxAggregateOutputType = {
   id: bigint | null
   accountId: bigint | null
-  nickname: string | null
+  name: string | null
   job: string | null
   level: number | null
   exp: bigint | null
@@ -115,7 +115,7 @@ export type PlayerMaxAggregateOutputType = {
 export type PlayerCountAggregateOutputType = {
   id: number
   accountId: number
-  nickname: number
+  name: number
   job: number
   level: number
   exp: number
@@ -178,7 +178,7 @@ export type PlayerSumAggregateInputType = {
 export type PlayerMinAggregateInputType = {
   id?: true
   accountId?: true
-  nickname?: true
+  name?: true
   job?: true
   level?: true
   exp?: true
@@ -203,7 +203,7 @@ export type PlayerMinAggregateInputType = {
 export type PlayerMaxAggregateInputType = {
   id?: true
   accountId?: true
-  nickname?: true
+  name?: true
   job?: true
   level?: true
   exp?: true
@@ -228,7 +228,7 @@ export type PlayerMaxAggregateInputType = {
 export type PlayerCountAggregateInputType = {
   id?: true
   accountId?: true
-  nickname?: true
+  name?: true
   job?: true
   level?: true
   exp?: true
@@ -340,7 +340,7 @@ export type PlayerGroupByArgs<ExtArgs extends runtime.Types.Extensions.InternalA
 export type PlayerGroupByOutputType = {
   id: bigint
   accountId: bigint
-  nickname: string
+  name: string
   job: string
   level: number
   exp: bigint
@@ -388,7 +388,7 @@ export type PlayerWhereInput = {
   NOT?: Prisma.PlayerWhereInput | Prisma.PlayerWhereInput[]
   id?: Prisma.BigIntFilter<"Player"> | bigint | number
   accountId?: Prisma.BigIntFilter<"Player"> | bigint | number
-  nickname?: Prisma.StringFilter<"Player"> | string
+  name?: Prisma.StringFilter<"Player"> | string
   job?: Prisma.StringFilter<"Player"> | string
   level?: Prisma.IntFilter<"Player"> | number
   exp?: Prisma.BigIntFilter<"Player"> | bigint | number
@@ -413,7 +413,7 @@ export type PlayerWhereInput = {
 export type PlayerOrderByWithRelationInput = {
   id?: Prisma.SortOrder
   accountId?: Prisma.SortOrder
-  nickname?: Prisma.SortOrder
+  name?: Prisma.SortOrder
   job?: Prisma.SortOrder
   level?: Prisma.SortOrder
   exp?: Prisma.SortOrder
@@ -442,7 +442,7 @@ export type PlayerWhereUniqueInput = Prisma.AtLeast<{
   OR?: Prisma.PlayerWhereInput[]
   NOT?: Prisma.PlayerWhereInput | Prisma.PlayerWhereInput[]
   accountId?: Prisma.BigIntFilter<"Player"> | bigint | number
-  nickname?: Prisma.StringFilter<"Player"> | string
+  name?: Prisma.StringFilter<"Player"> | string
   job?: Prisma.StringFilter<"Player"> | string
   level?: Prisma.IntFilter<"Player"> | number
   exp?: Prisma.BigIntFilter<"Player"> | bigint | number
@@ -467,7 +467,7 @@ export type PlayerWhereUniqueInput = Prisma.AtLeast<{
 export type PlayerOrderByWithAggregationInput = {
   id?: Prisma.SortOrder
   accountId?: Prisma.SortOrder
-  nickname?: Prisma.SortOrder
+  name?: Prisma.SortOrder
   job?: Prisma.SortOrder
   level?: Prisma.SortOrder
   exp?: Prisma.SortOrder
@@ -500,7 +500,7 @@ export type PlayerScalarWhereWithAggregatesInput = {
   NOT?: Prisma.PlayerScalarWhereWithAggregatesInput | Prisma.PlayerScalarWhereWithAggregatesInput[]
   id?: Prisma.BigIntWithAggregatesFilter<"Player"> | bigint | number
   accountId?: Prisma.BigIntWithAggregatesFilter<"Player"> | bigint | number
-  nickname?: Prisma.StringWithAggregatesFilter<"Player"> | string
+  name?: Prisma.StringWithAggregatesFilter<"Player"> | string
   job?: Prisma.StringWithAggregatesFilter<"Player"> | string
   level?: Prisma.IntWithAggregatesFilter<"Player"> | number
   exp?: Prisma.BigIntWithAggregatesFilter<"Player"> | bigint | number
@@ -525,7 +525,7 @@ export type PlayerScalarWhereWithAggregatesInput = {
 export type PlayerCreateInput = {
   id?: bigint | number
   accountId: bigint | number
-  nickname: string
+  name: string
   job: string
   level?: number
   exp?: bigint | number
@@ -550,7 +550,7 @@ export type PlayerCreateInput = {
 export type PlayerUncheckedCreateInput = {
   id?: bigint | number
   accountId: bigint | number
-  nickname: string
+  name: string
   job: string
   level?: number
   exp?: bigint | number
@@ -575,7 +575,7 @@ export type PlayerUncheckedCreateInput = {
 export type PlayerUpdateInput = {
   id?: Prisma.BigIntFieldUpdateOperationsInput | bigint | number
   accountId?: Prisma.BigIntFieldUpdateOperationsInput | bigint | number
-  nickname?: Prisma.StringFieldUpdateOperationsInput | string
+  name?: Prisma.StringFieldUpdateOperationsInput | string
   job?: Prisma.StringFieldUpdateOperationsInput | string
   level?: Prisma.IntFieldUpdateOperationsInput | number
   exp?: Prisma.BigIntFieldUpdateOperationsInput | bigint | number
@@ -600,7 +600,7 @@ export type PlayerUpdateInput = {
 export type PlayerUncheckedUpdateInput = {
   id?: Prisma.BigIntFieldUpdateOperationsInput | bigint | number
   accountId?: Prisma.BigIntFieldUpdateOperationsInput | bigint | number
-  nickname?: Prisma.StringFieldUpdateOperationsInput | string
+  name?: Prisma.StringFieldUpdateOperationsInput | string
   job?: Prisma.StringFieldUpdateOperationsInput | string
   level?: Prisma.IntFieldUpdateOperationsInput | number
   exp?: Prisma.BigIntFieldUpdateOperationsInput | bigint | number
@@ -625,7 +625,7 @@ export type PlayerUncheckedUpdateInput = {
 export type PlayerCreateManyInput = {
   id?: bigint | number
   accountId: bigint | number
-  nickname: string
+  name: string
   job: string
   level?: number
   exp?: bigint | number
@@ -650,7 +650,7 @@ export type PlayerCreateManyInput = {
 export type PlayerUpdateManyMutationInput = {
   id?: Prisma.BigIntFieldUpdateOperationsInput | bigint | number
   accountId?: Prisma.BigIntFieldUpdateOperationsInput | bigint | number
-  nickname?: Prisma.StringFieldUpdateOperationsInput | string
+  name?: Prisma.StringFieldUpdateOperationsInput | string
   job?: Prisma.StringFieldUpdateOperationsInput | string
   level?: Prisma.IntFieldUpdateOperationsInput | number
   exp?: Prisma.BigIntFieldUpdateOperationsInput | bigint | number
@@ -675,7 +675,7 @@ export type PlayerUpdateManyMutationInput = {
 export type PlayerUncheckedUpdateManyInput = {
   id?: Prisma.BigIntFieldUpdateOperationsInput | bigint | number
   accountId?: Prisma.BigIntFieldUpdateOperationsInput | bigint | number
-  nickname?: Prisma.StringFieldUpdateOperationsInput | string
+  name?: Prisma.StringFieldUpdateOperationsInput | string
   job?: Prisma.StringFieldUpdateOperationsInput | string
   level?: Prisma.IntFieldUpdateOperationsInput | number
   exp?: Prisma.BigIntFieldUpdateOperationsInput | bigint | number
@@ -706,7 +706,7 @@ export type PlayerOrderByRelevanceInput = {
 export type PlayerCountOrderByAggregateInput = {
   id?: Prisma.SortOrder
   accountId?: Prisma.SortOrder
-  nickname?: Prisma.SortOrder
+  name?: Prisma.SortOrder
   job?: Prisma.SortOrder
   level?: Prisma.SortOrder
   exp?: Prisma.SortOrder
@@ -749,7 +749,7 @@ export type PlayerAvgOrderByAggregateInput = {
 export type PlayerMaxOrderByAggregateInput = {
   id?: Prisma.SortOrder
   accountId?: Prisma.SortOrder
-  nickname?: Prisma.SortOrder
+  name?: Prisma.SortOrder
   job?: Prisma.SortOrder
   level?: Prisma.SortOrder
   exp?: Prisma.SortOrder
@@ -774,7 +774,7 @@ export type PlayerMaxOrderByAggregateInput = {
 export type PlayerMinOrderByAggregateInput = {
   id?: Prisma.SortOrder
   accountId?: Prisma.SortOrder
-  nickname?: Prisma.SortOrder
+  name?: Prisma.SortOrder
   job?: Prisma.SortOrder
   level?: Prisma.SortOrder
   exp?: Prisma.SortOrder
@@ -847,7 +847,7 @@ export type DateTimeFieldUpdateOperationsInput = {
 export type PlayerSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
   id?: boolean
   accountId?: boolean
-  nickname?: boolean
+  name?: boolean
   job?: boolean
   level?: boolean
   exp?: boolean
@@ -874,7 +874,7 @@ export type PlayerSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs =
 export type PlayerSelectScalar = {
   id?: boolean
   accountId?: boolean
-  nickname?: boolean
+  name?: boolean
   job?: boolean
   level?: boolean
   exp?: boolean
@@ -896,7 +896,7 @@ export type PlayerSelectScalar = {
   deletedAt?: boolean
 }
 
-export type PlayerOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "accountId" | "nickname" | "job" | "level" | "exp" | "cash" | "currSubMapId" | "status" | "loginCount" | "lastLoginAt" | "onlineAt" | "attrTalent" | "attrPhysical" | "attrLogic" | "attrImagination" | "attrBoldness" | "attrCharm" | "attrPoint" | "createdAt" | "updatedAt" | "deletedAt", ExtArgs["result"]["player"]>
+export type PlayerOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "accountId" | "name" | "job" | "level" | "exp" | "cash" | "currSubMapId" | "status" | "loginCount" | "lastLoginAt" | "onlineAt" | "attrTalent" | "attrPhysical" | "attrLogic" | "attrImagination" | "attrBoldness" | "attrCharm" | "attrPoint" | "createdAt" | "updatedAt" | "deletedAt", ExtArgs["result"]["player"]>
 
 export type $PlayerPayload<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   name: "Player"
@@ -904,7 +904,7 @@ export type $PlayerPayload<ExtArgs extends runtime.Types.Extensions.InternalArgs
   scalars: runtime.Types.Extensions.GetPayloadResult<{
     id: bigint
     accountId: bigint
-    nickname: string
+    name: string
     job: string
     level: number
     exp: bigint
@@ -1307,7 +1307,7 @@ export interface Prisma__PlayerClient<T, Null = never, ExtArgs extends runtime.T
 export interface PlayerFieldRefs {
   readonly id: Prisma.FieldRef<"Player", 'BigInt'>
   readonly accountId: Prisma.FieldRef<"Player", 'BigInt'>
-  readonly nickname: Prisma.FieldRef<"Player", 'String'>
+  readonly name: Prisma.FieldRef<"Player", 'String'>
   readonly job: Prisma.FieldRef<"Player", 'String'>
   readonly level: Prisma.FieldRef<"Player", 'Int'>
   readonly exp: Prisma.FieldRef<"Player", 'BigInt'>

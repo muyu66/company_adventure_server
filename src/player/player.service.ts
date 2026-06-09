@@ -1,8 +1,5 @@
 import { Injectable } from '@nestjs/common';
 import { PrismaService } from 'src/prisma.service';
-import { Player } from '../generated/prisma/client';
-import { UnitType } from './player.const';
-import { PlayerInfoRes, PlayerInfoSchema } from './schema/player.schema';
 import {
   getAggro,
   getAtk,
@@ -16,7 +13,10 @@ import {
   getHp,
   getMp,
   getSpeed,
-} from './tool';
+} from 'src/tool';
+import { Player } from '../generated/prisma/client';
+import { UnitType } from './player.const';
+import { PlayerInfoRes, PlayerInfoSchema } from './schema/player.schema';
 
 @Injectable()
 export class PlayerService {
@@ -36,26 +36,25 @@ export class PlayerService {
 
   getPlayersInfo(player: Player[]): PlayerInfoRes[] {
     return player.map((player) => {
-      const base = PlayerInfoSchema.parse(player);
-      const info: PlayerInfoRes = {
-        ...base,
+      return PlayerInfoSchema.parse({
+        ...player,
+        id: 'p1',
         team: 1,
         type: UnitType.PLAYER,
         spriteFrames: player.job,
         hp: getHp(player),
         mp: getMp(player),
-        speed: getSpeed(player),
-        atkRange: getAttackRange(player),
-        atkSpeed: getAtkSpeed(player),
         atk: getAtk(player),
         def: getDef(player),
         aggro: getAggro(player),
         crit: getCrit(player),
         critDmg: getCritDmg(player),
+        atkSpeed: getAtkSpeed(player),
         critRes: getCritRes(player),
         critDmgRes: getCritDmgRes(player),
-      };
-      return info;
+        speed: getSpeed(player),
+        atkRange: getAttackRange(player),
+      });
     });
   }
 }

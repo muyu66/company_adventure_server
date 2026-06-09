@@ -2,6 +2,7 @@ import { z } from 'zod';
 import { Job, UnitType } from '../player.const';
 
 export const UnitInfoSchema = z.object({
+  id: z.string(),
   name: z.string(),
   team: z.number(),
   type: z.enum(UnitType),
@@ -22,7 +23,6 @@ export const UnitInfoSchema = z.object({
 export type UnitInfoRes = z.infer<typeof UnitInfoSchema>;
 
 export const PlayerInfoSchema = UnitInfoSchema.extend({
-  id: z.bigint().transform((v) => v.toString()),
   job: z.enum(Job),
   level: z.number(),
   attrTalent: z.number(),
