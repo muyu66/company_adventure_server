@@ -28,13 +28,11 @@ export type AggregateMap = {
 
 export type MapAvgAggregateOutputType = {
   id: number | null
-  limited: number | null
   sort: number | null
 }
 
 export type MapSumAggregateOutputType = {
   id: bigint | null
-  limited: number | null
   sort: number | null
 }
 
@@ -42,7 +40,7 @@ export type MapMinAggregateOutputType = {
   id: bigint | null
   name: string | null
   type: string | null
-  limited: number | null
+  limited: boolean | null
   sort: number | null
   createdAt: Date | null
   updatedAt: Date | null
@@ -53,7 +51,7 @@ export type MapMaxAggregateOutputType = {
   id: bigint | null
   name: string | null
   type: string | null
-  limited: number | null
+  limited: boolean | null
   sort: number | null
   createdAt: Date | null
   updatedAt: Date | null
@@ -75,13 +73,11 @@ export type MapCountAggregateOutputType = {
 
 export type MapAvgAggregateInputType = {
   id?: true
-  limited?: true
   sort?: true
 }
 
 export type MapSumAggregateInputType = {
   id?: true
-  limited?: true
   sort?: true
 }
 
@@ -209,7 +205,7 @@ export type MapGroupByOutputType = {
   id: bigint
   name: string
   type: string
-  limited: number
+  limited: boolean
   sort: number
   createdAt: Date
   updatedAt: Date
@@ -243,7 +239,7 @@ export type MapWhereInput = {
   id?: Prisma.BigIntFilter<"Map"> | bigint | number
   name?: Prisma.StringFilter<"Map"> | string
   type?: Prisma.StringFilter<"Map"> | string
-  limited?: Prisma.IntFilter<"Map"> | number
+  limited?: Prisma.BoolFilter<"Map"> | boolean
   sort?: Prisma.IntFilter<"Map"> | number
   createdAt?: Prisma.DateTimeFilter<"Map"> | Date | string
   updatedAt?: Prisma.DateTimeFilter<"Map"> | Date | string
@@ -271,7 +267,7 @@ export type MapWhereUniqueInput = Prisma.AtLeast<{
   NOT?: Prisma.MapWhereInput | Prisma.MapWhereInput[]
   name?: Prisma.StringFilter<"Map"> | string
   type?: Prisma.StringFilter<"Map"> | string
-  limited?: Prisma.IntFilter<"Map"> | number
+  limited?: Prisma.BoolFilter<"Map"> | boolean
   sort?: Prisma.IntFilter<"Map"> | number
   createdAt?: Prisma.DateTimeFilter<"Map"> | Date | string
   updatedAt?: Prisma.DateTimeFilter<"Map"> | Date | string
@@ -302,7 +298,7 @@ export type MapScalarWhereWithAggregatesInput = {
   id?: Prisma.BigIntWithAggregatesFilter<"Map"> | bigint | number
   name?: Prisma.StringWithAggregatesFilter<"Map"> | string
   type?: Prisma.StringWithAggregatesFilter<"Map"> | string
-  limited?: Prisma.IntWithAggregatesFilter<"Map"> | number
+  limited?: Prisma.BoolWithAggregatesFilter<"Map"> | boolean
   sort?: Prisma.IntWithAggregatesFilter<"Map"> | number
   createdAt?: Prisma.DateTimeWithAggregatesFilter<"Map"> | Date | string
   updatedAt?: Prisma.DateTimeWithAggregatesFilter<"Map"> | Date | string
@@ -313,7 +309,7 @@ export type MapCreateInput = {
   id?: bigint | number
   name: string
   type: string
-  limited?: number
+  limited?: boolean
   sort: number
   createdAt?: Date | string
   updatedAt?: Date | string
@@ -325,7 +321,7 @@ export type MapUncheckedCreateInput = {
   id?: bigint | number
   name: string
   type: string
-  limited?: number
+  limited?: boolean
   sort: number
   createdAt?: Date | string
   updatedAt?: Date | string
@@ -337,7 +333,7 @@ export type MapUpdateInput = {
   id?: Prisma.BigIntFieldUpdateOperationsInput | bigint | number
   name?: Prisma.StringFieldUpdateOperationsInput | string
   type?: Prisma.StringFieldUpdateOperationsInput | string
-  limited?: Prisma.IntFieldUpdateOperationsInput | number
+  limited?: Prisma.BoolFieldUpdateOperationsInput | boolean
   sort?: Prisma.IntFieldUpdateOperationsInput | number
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -349,7 +345,7 @@ export type MapUncheckedUpdateInput = {
   id?: Prisma.BigIntFieldUpdateOperationsInput | bigint | number
   name?: Prisma.StringFieldUpdateOperationsInput | string
   type?: Prisma.StringFieldUpdateOperationsInput | string
-  limited?: Prisma.IntFieldUpdateOperationsInput | number
+  limited?: Prisma.BoolFieldUpdateOperationsInput | boolean
   sort?: Prisma.IntFieldUpdateOperationsInput | number
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -361,7 +357,7 @@ export type MapCreateManyInput = {
   id?: bigint | number
   name: string
   type: string
-  limited?: number
+  limited?: boolean
   sort: number
   createdAt?: Date | string
   updatedAt?: Date | string
@@ -372,7 +368,7 @@ export type MapUpdateManyMutationInput = {
   id?: Prisma.BigIntFieldUpdateOperationsInput | bigint | number
   name?: Prisma.StringFieldUpdateOperationsInput | string
   type?: Prisma.StringFieldUpdateOperationsInput | string
-  limited?: Prisma.IntFieldUpdateOperationsInput | number
+  limited?: Prisma.BoolFieldUpdateOperationsInput | boolean
   sort?: Prisma.IntFieldUpdateOperationsInput | number
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -383,7 +379,7 @@ export type MapUncheckedUpdateManyInput = {
   id?: Prisma.BigIntFieldUpdateOperationsInput | bigint | number
   name?: Prisma.StringFieldUpdateOperationsInput | string
   type?: Prisma.StringFieldUpdateOperationsInput | string
-  limited?: Prisma.IntFieldUpdateOperationsInput | number
+  limited?: Prisma.BoolFieldUpdateOperationsInput | boolean
   sort?: Prisma.IntFieldUpdateOperationsInput | number
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -409,7 +405,6 @@ export type MapCountOrderByAggregateInput = {
 
 export type MapAvgOrderByAggregateInput = {
   id?: Prisma.SortOrder
-  limited?: Prisma.SortOrder
   sort?: Prisma.SortOrder
 }
 
@@ -437,13 +432,16 @@ export type MapMinOrderByAggregateInput = {
 
 export type MapSumOrderByAggregateInput = {
   id?: Prisma.SortOrder
-  limited?: Prisma.SortOrder
   sort?: Prisma.SortOrder
 }
 
 export type MapScalarRelationFilter = {
   is?: Prisma.MapWhereInput
   isNot?: Prisma.MapWhereInput
+}
+
+export type BoolFieldUpdateOperationsInput = {
+  set?: boolean
 }
 
 export type MapCreateNestedOneWithoutSubMapsInput = {
@@ -464,7 +462,7 @@ export type MapCreateWithoutSubMapsInput = {
   id?: bigint | number
   name: string
   type: string
-  limited?: number
+  limited?: boolean
   sort: number
   createdAt?: Date | string
   updatedAt?: Date | string
@@ -475,7 +473,7 @@ export type MapUncheckedCreateWithoutSubMapsInput = {
   id?: bigint | number
   name: string
   type: string
-  limited?: number
+  limited?: boolean
   sort: number
   createdAt?: Date | string
   updatedAt?: Date | string
@@ -502,7 +500,7 @@ export type MapUpdateWithoutSubMapsInput = {
   id?: Prisma.BigIntFieldUpdateOperationsInput | bigint | number
   name?: Prisma.StringFieldUpdateOperationsInput | string
   type?: Prisma.StringFieldUpdateOperationsInput | string
-  limited?: Prisma.IntFieldUpdateOperationsInput | number
+  limited?: Prisma.BoolFieldUpdateOperationsInput | boolean
   sort?: Prisma.IntFieldUpdateOperationsInput | number
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -513,7 +511,7 @@ export type MapUncheckedUpdateWithoutSubMapsInput = {
   id?: Prisma.BigIntFieldUpdateOperationsInput | bigint | number
   name?: Prisma.StringFieldUpdateOperationsInput | string
   type?: Prisma.StringFieldUpdateOperationsInput | string
-  limited?: Prisma.IntFieldUpdateOperationsInput | number
+  limited?: Prisma.BoolFieldUpdateOperationsInput | boolean
   sort?: Prisma.IntFieldUpdateOperationsInput | number
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -592,7 +590,7 @@ export type $MapPayload<ExtArgs extends runtime.Types.Extensions.InternalArgs = 
     id: bigint
     name: string
     type: string
-    limited: number
+    limited: boolean
     sort: number
     createdAt: Date
     updatedAt: Date
@@ -970,7 +968,7 @@ export interface MapFieldRefs {
   readonly id: Prisma.FieldRef<"Map", 'BigInt'>
   readonly name: Prisma.FieldRef<"Map", 'String'>
   readonly type: Prisma.FieldRef<"Map", 'String'>
-  readonly limited: Prisma.FieldRef<"Map", 'Int'>
+  readonly limited: Prisma.FieldRef<"Map", 'Boolean'>
   readonly sort: Prisma.FieldRef<"Map", 'Int'>
   readonly createdAt: Prisma.FieldRef<"Map", 'DateTime'>
   readonly updatedAt: Prisma.FieldRef<"Map", 'DateTime'>

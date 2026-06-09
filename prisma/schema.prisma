@@ -95,8 +95,8 @@ model Map {
 
   type String @db.VarChar(20)
 
-  limited Int @default(0) @db.UnsignedTinyInt
-  sort    Int @db.UnsignedTinyInt
+  limited Boolean @default(false)
+  sort    Int     @db.UnsignedTinyInt
 
   createdAt DateTime  @default(now()) @map("created_at")
   updatedAt DateTime  @updatedAt @map("updated_at")

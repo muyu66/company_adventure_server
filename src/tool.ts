@@ -1,6 +1,7 @@
 import { Player } from 'src/generated/prisma/client';
 import { customAlphabet } from 'nanoid';
 import { Job } from './player/player.const';
+import { clamp } from 'es-toolkit';
 
 const generateRandomId = customAlphabet('1234567890qwertyuiopasdfghjklzxcvbnm');
 
@@ -166,7 +167,7 @@ export function getAttackRange(player: Player): number {
 export function getAtkSpeed(player: Player): number {
   switch (player.job) {
     case Job.CODER.toString():
-      return 100 + player.attrLogic * 2;
+      return clamp(100 + player.attrLogic * 2, 1, 400);
     default:
       return 100;
   }
