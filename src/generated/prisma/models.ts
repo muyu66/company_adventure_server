@@ -9,4 +9,7 @@
  * 🟢 You can import this file directly.
  */
 export type * from './models/Player.js'
+export type * from './models/Monster.js'
+export type * from './models/Map.js'
+export type * from './models/SubMap.js'
 export type * from './commonInputTypes.js'

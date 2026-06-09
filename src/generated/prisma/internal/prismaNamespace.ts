@@ -384,7 +384,10 @@ type FieldRefInputType<Model, FieldType> = Model extends never ? never : FieldRe
 
 
 export const ModelName = {
-  Player: 'Player'
+  Player: 'Player',
+  Monster: 'Monster',
+  Map: 'Map',
+  SubMap: 'SubMap'
 } as const
 
 export type ModelName = (typeof ModelName)[keyof typeof ModelName]
@@ -400,7 +403,7 @@ export type TypeMap<ExtArgs extends runtime.Types.Extensions.InternalArgs = runt
     omit: GlobalOmitOptions
   }
   meta: {
-    modelProps: "player"
+    modelProps: "player" | "monster" | "map" | "subMap"
     txIsolationLevel: TransactionIsolationLevel
   }
   model: {
@@ -470,6 +473,204 @@ export type TypeMap<ExtArgs extends runtime.Types.Extensions.InternalArgs = runt
         }
       }
     }
+    Monster: {
+      payload: Prisma.$MonsterPayload<ExtArgs>
+      fields: Prisma.MonsterFieldRefs
+      operations: {
+        findUnique: {
+          args: Prisma.MonsterFindUniqueArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$MonsterPayload> | null
+        }
+        findUniqueOrThrow: {
+          args: Prisma.MonsterFindUniqueOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$MonsterPayload>
+        }
+        findFirst: {
+          args: Prisma.MonsterFindFirstArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$MonsterPayload> | null
+        }
+        findFirstOrThrow: {
+          args: Prisma.MonsterFindFirstOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$MonsterPayload>
+        }
+        findMany: {
+          args: Prisma.MonsterFindManyArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$MonsterPayload>[]
+        }
+        create: {
+          args: Prisma.MonsterCreateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$MonsterPayload>
+        }
+        createMany: {
+          args: Prisma.MonsterCreateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        delete: {
+          args: Prisma.MonsterDeleteArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$MonsterPayload>
+        }
+        update: {
+          args: Prisma.MonsterUpdateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$MonsterPayload>
+        }
+        deleteMany: {
+          args: Prisma.MonsterDeleteManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateMany: {
+          args: Prisma.MonsterUpdateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        upsert: {
+          args: Prisma.MonsterUpsertArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$MonsterPayload>
+        }
+        aggregate: {
+          args: Prisma.MonsterAggregateArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.AggregateMonster>
+        }
+        groupBy: {
+          args: Prisma.MonsterGroupByArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.MonsterGroupByOutputType>[]
+        }
+        count: {
+          args: Prisma.MonsterCountArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.MonsterCountAggregateOutputType> | number
+        }
+      }
+    }
+    Map: {
+      payload: Prisma.$MapPayload<ExtArgs>
+      fields: Prisma.MapFieldRefs
+      operations: {
+        findUnique: {
+          args: Prisma.MapFindUniqueArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$MapPayload> | null
+        }
+        findUniqueOrThrow: {
+          args: Prisma.MapFindUniqueOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$MapPayload>
+        }
+        findFirst: {
+          args: Prisma.MapFindFirstArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$MapPayload> | null
+        }
+        findFirstOrThrow: {
+          args: Prisma.MapFindFirstOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$MapPayload>
+        }
+        findMany: {
+          args: Prisma.MapFindManyArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$MapPayload>[]
+        }
+        create: {
+          args: Prisma.MapCreateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$MapPayload>
+        }
+        createMany: {
+          args: Prisma.MapCreateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        delete: {
+          args: Prisma.MapDeleteArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$MapPayload>
+        }
+        update: {
+          args: Prisma.MapUpdateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$MapPayload>
+        }
+        deleteMany: {
+          args: Prisma.MapDeleteManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateMany: {
+          args: Prisma.MapUpdateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        upsert: {
+          args: Prisma.MapUpsertArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$MapPayload>
+        }
+        aggregate: {
+          args: Prisma.MapAggregateArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.AggregateMap>
+        }
+        groupBy: {
+          args: Prisma.MapGroupByArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.MapGroupByOutputType>[]
+        }
+        count: {
+          args: Prisma.MapCountArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.MapCountAggregateOutputType> | number
+        }
+      }
+    }
+    SubMap: {
+      payload: Prisma.$SubMapPayload<ExtArgs>
+      fields: Prisma.SubMapFieldRefs
+      operations: {
+        findUnique: {
+          args: Prisma.SubMapFindUniqueArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$SubMapPayload> | null
+        }
+        findUniqueOrThrow: {
+          args: Prisma.SubMapFindUniqueOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$SubMapPayload>
+        }
+        findFirst: {
+          args: Prisma.SubMapFindFirstArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$SubMapPayload> | null
+        }
+        findFirstOrThrow: {
+          args: Prisma.SubMapFindFirstOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$SubMapPayload>
+        }
+        findMany: {
+          args: Prisma.SubMapFindManyArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$SubMapPayload>[]
+        }
+        create: {
+          args: Prisma.SubMapCreateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$SubMapPayload>
+        }
+        createMany: {
+          args: Prisma.SubMapCreateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        delete: {
+          args: Prisma.SubMapDeleteArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$SubMapPayload>
+        }
+        update: {
+          args: Prisma.SubMapUpdateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$SubMapPayload>
+        }
+        deleteMany: {
+          args: Prisma.SubMapDeleteManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateMany: {
+          args: Prisma.SubMapUpdateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        upsert: {
+          args: Prisma.SubMapUpsertArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$SubMapPayload>
+        }
+        aggregate: {
+          args: Prisma.SubMapAggregateArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.AggregateSubMap>
+        }
+        groupBy: {
+          args: Prisma.SubMapGroupByArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.SubMapGroupByOutputType>[]
+        }
+        count: {
+          args: Prisma.SubMapCountArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.SubMapCountAggregateOutputType> | number
+        }
+      }
+    }
   }
 } & {
   other: {
@@ -517,6 +718,7 @@ export const PlayerScalarFieldEnum = {
   level: 'level',
   exp: 'exp',
   cash: 'cash',
+  currSubMapId: 'currSubMapId',
   status: 'status',
   loginCount: 'loginCount',
   lastLoginAt: 'lastLoginAt',
@@ -536,12 +738,73 @@ export const PlayerScalarFieldEnum = {
 export type PlayerScalarFieldEnum = (typeof PlayerScalarFieldEnum)[keyof typeof PlayerScalarFieldEnum]
 
 
+export const MonsterScalarFieldEnum = {
+  id: 'id',
+  subMapId: 'subMapId',
+  name: 'name',
+  spriteFrames: 'spriteFrames',
+  exp: 'exp',
+  hp: 'hp',
+  atk: 'atk',
+  def: 'def',
+  crit: 'crit',
+  critDmg: 'critDmg',
+  atkSpeed: 'atkSpeed',
+  critRes: 'critRes',
+  critDmgRes: 'critDmgRes',
+  speed: 'speed',
+  atkRange: 'atkRange',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt',
+  deletedAt: 'deletedAt'
+} as const
+
+export type MonsterScalarFieldEnum = (typeof MonsterScalarFieldEnum)[keyof typeof MonsterScalarFieldEnum]
+
+
+export const MapScalarFieldEnum = {
+  id: 'id',
+  name: 'name',
+  type: 'type',
+  limited: 'limited',
+  sort: 'sort',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt',
+  deletedAt: 'deletedAt'
+} as const
+
+export type MapScalarFieldEnum = (typeof MapScalarFieldEnum)[keyof typeof MapScalarFieldEnum]
+
+
+export const SubMapScalarFieldEnum = {
+  id: 'id',
+  mapId: 'mapId',
+  background: 'background',
+  unlockLevel: 'unlockLevel',
+  monsterLevel: 'monsterLevel',
+  sort: 'sort',
+  monsterIds: 'monsterIds',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt',
+  deletedAt: 'deletedAt'
+} as const
+
+export type SubMapScalarFieldEnum = (typeof SubMapScalarFieldEnum)[keyof typeof SubMapScalarFieldEnum]
+
+
 export const SortOrder = {
   asc: 'asc',
   desc: 'desc'
 } as const
 
 export type SortOrder = (typeof SortOrder)[keyof typeof SortOrder]
+
+
+export const JsonNullValueInput = {
+  JsonNull: JsonNull
+} as const
+
+export type JsonNullValueInput = (typeof JsonNullValueInput)[keyof typeof JsonNullValueInput]
 
 
 export const NullsOrder = {
@@ -558,6 +821,46 @@ export const PlayerOrderByRelevanceFieldEnum = {
 } as const
 
 export type PlayerOrderByRelevanceFieldEnum = (typeof PlayerOrderByRelevanceFieldEnum)[keyof typeof PlayerOrderByRelevanceFieldEnum]
+
+
+export const MonsterOrderByRelevanceFieldEnum = {
+  name: 'name',
+  spriteFrames: 'spriteFrames'
+} as const
+
+export type MonsterOrderByRelevanceFieldEnum = (typeof MonsterOrderByRelevanceFieldEnum)[keyof typeof MonsterOrderByRelevanceFieldEnum]
+
+
+export const MapOrderByRelevanceFieldEnum = {
+  name: 'name',
+  type: 'type'
+} as const
+
+export type MapOrderByRelevanceFieldEnum = (typeof MapOrderByRelevanceFieldEnum)[keyof typeof MapOrderByRelevanceFieldEnum]
+
+
+export const JsonNullValueFilter = {
+  DbNull: DbNull,
+  JsonNull: JsonNull,
+  AnyNull: AnyNull
+} as const
+
+export type JsonNullValueFilter = (typeof JsonNullValueFilter)[keyof typeof JsonNullValueFilter]
+
+
+export const QueryMode = {
+  default: 'default',
+  insensitive: 'insensitive'
+} as const
+
+export type QueryMode = (typeof QueryMode)[keyof typeof QueryMode]
+
+
+export const SubMapOrderByRelevanceFieldEnum = {
+  background: 'background'
+} as const
+
+export type SubMapOrderByRelevanceFieldEnum = (typeof SubMapOrderByRelevanceFieldEnum)[keyof typeof SubMapOrderByRelevanceFieldEnum]
 
 
 
@@ -591,6 +894,20 @@ export type IntFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'In
  * Reference to a field of type 'DateTime'
  */
 export type DateTimeFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'DateTime'>
+    
+
+
+/**
+ * Reference to a field of type 'Json'
+ */
+export type JsonFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Json'>
+    
+
+
+/**
+ * Reference to a field of type 'QueryMode'
+ */
+export type EnumQueryModeFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'QueryMode'>
     
 
 
@@ -711,6 +1028,9 @@ export type PrismaClientOptions = ({
 }
 export type GlobalOmitConfig = {
   player?: Prisma.PlayerOmit
+  monster?: Prisma.MonsterOmit
+  map?: Prisma.MapOmit
+  subMap?: Prisma.SubMapOmit
 }
 
 /* Types for Logging */

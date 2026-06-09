@@ -32,6 +32,7 @@ export type PlayerAvgAggregateOutputType = {
   level: number | null
   exp: number | null
   cash: number | null
+  currSubMapId: number | null
   status: number | null
   loginCount: number | null
   attrTalent: number | null
@@ -49,6 +50,7 @@ export type PlayerSumAggregateOutputType = {
   level: number | null
   exp: bigint | null
   cash: bigint | null
+  currSubMapId: bigint | null
   status: number | null
   loginCount: number | null
   attrTalent: number | null
@@ -68,6 +70,7 @@ export type PlayerMinAggregateOutputType = {
   level: number | null
   exp: bigint | null
   cash: bigint | null
+  currSubMapId: bigint | null
   status: number | null
   loginCount: number | null
   lastLoginAt: Date | null
@@ -92,6 +95,7 @@ export type PlayerMaxAggregateOutputType = {
   level: number | null
   exp: bigint | null
   cash: bigint | null
+  currSubMapId: bigint | null
   status: number | null
   loginCount: number | null
   lastLoginAt: Date | null
@@ -116,6 +120,7 @@ export type PlayerCountAggregateOutputType = {
   level: number
   exp: number
   cash: number
+  currSubMapId: number
   status: number
   loginCount: number
   lastLoginAt: number
@@ -140,6 +145,7 @@ export type PlayerAvgAggregateInputType = {
   level?: true
   exp?: true
   cash?: true
+  currSubMapId?: true
   status?: true
   loginCount?: true
   attrTalent?: true
@@ -157,6 +163,7 @@ export type PlayerSumAggregateInputType = {
   level?: true
   exp?: true
   cash?: true
+  currSubMapId?: true
   status?: true
   loginCount?: true
   attrTalent?: true
@@ -176,6 +183,7 @@ export type PlayerMinAggregateInputType = {
   level?: true
   exp?: true
   cash?: true
+  currSubMapId?: true
   status?: true
   loginCount?: true
   lastLoginAt?: true
@@ -200,6 +208,7 @@ export type PlayerMaxAggregateInputType = {
   level?: true
   exp?: true
   cash?: true
+  currSubMapId?: true
   status?: true
   loginCount?: true
   lastLoginAt?: true
@@ -224,6 +233,7 @@ export type PlayerCountAggregateInputType = {
   level?: true
   exp?: true
   cash?: true
+  currSubMapId?: true
   status?: true
   loginCount?: true
   lastLoginAt?: true
@@ -335,6 +345,7 @@ export type PlayerGroupByOutputType = {
   level: number
   exp: bigint
   cash: bigint
+  currSubMapId: bigint
   status: number
   loginCount: number
   lastLoginAt: Date | null
@@ -382,6 +393,7 @@ export type PlayerWhereInput = {
   level?: Prisma.IntFilter<"Player"> | number
   exp?: Prisma.BigIntFilter<"Player"> | bigint | number
   cash?: Prisma.BigIntFilter<"Player"> | bigint | number
+  currSubMapId?: Prisma.BigIntFilter<"Player"> | bigint | number
   status?: Prisma.IntFilter<"Player"> | number
   loginCount?: Prisma.IntFilter<"Player"> | number
   lastLoginAt?: Prisma.DateTimeNullableFilter<"Player"> | Date | string | null
@@ -406,6 +418,7 @@ export type PlayerOrderByWithRelationInput = {
   level?: Prisma.SortOrder
   exp?: Prisma.SortOrder
   cash?: Prisma.SortOrder
+  currSubMapId?: Prisma.SortOrder
   status?: Prisma.SortOrder
   loginCount?: Prisma.SortOrder
   lastLoginAt?: Prisma.SortOrderInput | Prisma.SortOrder
@@ -425,15 +438,16 @@ export type PlayerOrderByWithRelationInput = {
 
 export type PlayerWhereUniqueInput = Prisma.AtLeast<{
   id?: bigint | number
-  accountId?: bigint | number
   AND?: Prisma.PlayerWhereInput | Prisma.PlayerWhereInput[]
   OR?: Prisma.PlayerWhereInput[]
   NOT?: Prisma.PlayerWhereInput | Prisma.PlayerWhereInput[]
+  accountId?: Prisma.BigIntFilter<"Player"> | bigint | number
   nickname?: Prisma.StringFilter<"Player"> | string
   job?: Prisma.StringFilter<"Player"> | string
   level?: Prisma.IntFilter<"Player"> | number
   exp?: Prisma.BigIntFilter<"Player"> | bigint | number
   cash?: Prisma.BigIntFilter<"Player"> | bigint | number
+  currSubMapId?: Prisma.BigIntFilter<"Player"> | bigint | number
   status?: Prisma.IntFilter<"Player"> | number
   loginCount?: Prisma.IntFilter<"Player"> | number
   lastLoginAt?: Prisma.DateTimeNullableFilter<"Player"> | Date | string | null
@@ -448,7 +462,7 @@ export type PlayerWhereUniqueInput = Prisma.AtLeast<{
   createdAt?: Prisma.DateTimeFilter<"Player"> | Date | string
   updatedAt?: Prisma.DateTimeFilter<"Player"> | Date | string
   deletedAt?: Prisma.DateTimeNullableFilter<"Player"> | Date | string | null
-}, "id" | "accountId">
+}, "id">
 
 export type PlayerOrderByWithAggregationInput = {
   id?: Prisma.SortOrder
@@ -458,6 +472,7 @@ export type PlayerOrderByWithAggregationInput = {
   level?: Prisma.SortOrder
   exp?: Prisma.SortOrder
   cash?: Prisma.SortOrder
+  currSubMapId?: Prisma.SortOrder
   status?: Prisma.SortOrder
   loginCount?: Prisma.SortOrder
   lastLoginAt?: Prisma.SortOrderInput | Prisma.SortOrder
@@ -490,6 +505,7 @@ export type PlayerScalarWhereWithAggregatesInput = {
   level?: Prisma.IntWithAggregatesFilter<"Player"> | number
   exp?: Prisma.BigIntWithAggregatesFilter<"Player"> | bigint | number
   cash?: Prisma.BigIntWithAggregatesFilter<"Player"> | bigint | number
+  currSubMapId?: Prisma.BigIntWithAggregatesFilter<"Player"> | bigint | number
   status?: Prisma.IntWithAggregatesFilter<"Player"> | number
   loginCount?: Prisma.IntWithAggregatesFilter<"Player"> | number
   lastLoginAt?: Prisma.DateTimeNullableWithAggregatesFilter<"Player"> | Date | string | null
@@ -514,6 +530,7 @@ export type PlayerCreateInput = {
   level?: number
   exp?: bigint | number
   cash?: bigint | number
+  currSubMapId: bigint | number
   status?: number
   loginCount?: number
   lastLoginAt?: Date | string | null
@@ -538,6 +555,7 @@ export type PlayerUncheckedCreateInput = {
   level?: number
   exp?: bigint | number
   cash?: bigint | number
+  currSubMapId: bigint | number
   status?: number
   loginCount?: number
   lastLoginAt?: Date | string | null
@@ -562,6 +580,7 @@ export type PlayerUpdateInput = {
   level?: Prisma.IntFieldUpdateOperationsInput | number
   exp?: Prisma.BigIntFieldUpdateOperationsInput | bigint | number
   cash?: Prisma.BigIntFieldUpdateOperationsInput | bigint | number
+  currSubMapId?: Prisma.BigIntFieldUpdateOperationsInput | bigint | number
   status?: Prisma.IntFieldUpdateOperationsInput | number
   loginCount?: Prisma.IntFieldUpdateOperationsInput | number
   lastLoginAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -586,6 +605,7 @@ export type PlayerUncheckedUpdateInput = {
   level?: Prisma.IntFieldUpdateOperationsInput | number
   exp?: Prisma.BigIntFieldUpdateOperationsInput | bigint | number
   cash?: Prisma.BigIntFieldUpdateOperationsInput | bigint | number
+  currSubMapId?: Prisma.BigIntFieldUpdateOperationsInput | bigint | number
   status?: Prisma.IntFieldUpdateOperationsInput | number
   loginCount?: Prisma.IntFieldUpdateOperationsInput | number
   lastLoginAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -610,6 +630,7 @@ export type PlayerCreateManyInput = {
   level?: number
   exp?: bigint | number
   cash?: bigint | number
+  currSubMapId: bigint | number
   status?: number
   loginCount?: number
   lastLoginAt?: Date | string | null
@@ -634,6 +655,7 @@ export type PlayerUpdateManyMutationInput = {
   level?: Prisma.IntFieldUpdateOperationsInput | number
   exp?: Prisma.BigIntFieldUpdateOperationsInput | bigint | number
   cash?: Prisma.BigIntFieldUpdateOperationsInput | bigint | number
+  currSubMapId?: Prisma.BigIntFieldUpdateOperationsInput | bigint | number
   status?: Prisma.IntFieldUpdateOperationsInput | number
   loginCount?: Prisma.IntFieldUpdateOperationsInput | number
   lastLoginAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -658,6 +680,7 @@ export type PlayerUncheckedUpdateManyInput = {
   level?: Prisma.IntFieldUpdateOperationsInput | number
   exp?: Prisma.BigIntFieldUpdateOperationsInput | bigint | number
   cash?: Prisma.BigIntFieldUpdateOperationsInput | bigint | number
+  currSubMapId?: Prisma.BigIntFieldUpdateOperationsInput | bigint | number
   status?: Prisma.IntFieldUpdateOperationsInput | number
   loginCount?: Prisma.IntFieldUpdateOperationsInput | number
   lastLoginAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -688,6 +711,7 @@ export type PlayerCountOrderByAggregateInput = {
   level?: Prisma.SortOrder
   exp?: Prisma.SortOrder
   cash?: Prisma.SortOrder
+  currSubMapId?: Prisma.SortOrder
   status?: Prisma.SortOrder
   loginCount?: Prisma.SortOrder
   lastLoginAt?: Prisma.SortOrder
@@ -710,6 +734,7 @@ export type PlayerAvgOrderByAggregateInput = {
   level?: Prisma.SortOrder
   exp?: Prisma.SortOrder
   cash?: Prisma.SortOrder
+  currSubMapId?: Prisma.SortOrder
   status?: Prisma.SortOrder
   loginCount?: Prisma.SortOrder
   attrTalent?: Prisma.SortOrder
@@ -729,6 +754,7 @@ export type PlayerMaxOrderByAggregateInput = {
   level?: Prisma.SortOrder
   exp?: Prisma.SortOrder
   cash?: Prisma.SortOrder
+  currSubMapId?: Prisma.SortOrder
   status?: Prisma.SortOrder
   loginCount?: Prisma.SortOrder
   lastLoginAt?: Prisma.SortOrder
@@ -753,6 +779,7 @@ export type PlayerMinOrderByAggregateInput = {
   level?: Prisma.SortOrder
   exp?: Prisma.SortOrder
   cash?: Prisma.SortOrder
+  currSubMapId?: Prisma.SortOrder
   status?: Prisma.SortOrder
   loginCount?: Prisma.SortOrder
   lastLoginAt?: Prisma.SortOrder
@@ -775,6 +802,7 @@ export type PlayerSumOrderByAggregateInput = {
   level?: Prisma.SortOrder
   exp?: Prisma.SortOrder
   cash?: Prisma.SortOrder
+  currSubMapId?: Prisma.SortOrder
   status?: Prisma.SortOrder
   loginCount?: Prisma.SortOrder
   attrTalent?: Prisma.SortOrder
@@ -824,6 +852,7 @@ export type PlayerSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs =
   level?: boolean
   exp?: boolean
   cash?: boolean
+  currSubMapId?: boolean
   status?: boolean
   loginCount?: boolean
   lastLoginAt?: boolean
@@ -850,6 +879,7 @@ export type PlayerSelectScalar = {
   level?: boolean
   exp?: boolean
   cash?: boolean
+  currSubMapId?: boolean
   status?: boolean
   loginCount?: boolean
   lastLoginAt?: boolean
@@ -866,7 +896,7 @@ export type PlayerSelectScalar = {
   deletedAt?: boolean
 }
 
-export type PlayerOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "accountId" | "nickname" | "job" | "level" | "exp" | "cash" | "status" | "loginCount" | "lastLoginAt" | "onlineAt" | "attrTalent" | "attrPhysical" | "attrLogic" | "attrImagination" | "attrBoldness" | "attrCharm" | "attrPoint" | "createdAt" | "updatedAt" | "deletedAt", ExtArgs["result"]["player"]>
+export type PlayerOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "accountId" | "nickname" | "job" | "level" | "exp" | "cash" | "currSubMapId" | "status" | "loginCount" | "lastLoginAt" | "onlineAt" | "attrTalent" | "attrPhysical" | "attrLogic" | "attrImagination" | "attrBoldness" | "attrCharm" | "attrPoint" | "createdAt" | "updatedAt" | "deletedAt", ExtArgs["result"]["player"]>
 
 export type $PlayerPayload<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   name: "Player"
@@ -879,6 +909,7 @@ export type $PlayerPayload<ExtArgs extends runtime.Types.Extensions.InternalArgs
     level: number
     exp: bigint
     cash: bigint
+    currSubMapId: bigint
     /**
      * 0正常 1禁言 2封号
      */
@@ -1281,6 +1312,7 @@ export interface PlayerFieldRefs {
   readonly level: Prisma.FieldRef<"Player", 'Int'>
   readonly exp: Prisma.FieldRef<"Player", 'BigInt'>
   readonly cash: Prisma.FieldRef<"Player", 'BigInt'>
+  readonly currSubMapId: Prisma.FieldRef<"Player", 'BigInt'>
   readonly status: Prisma.FieldRef<"Player", 'Int'>
   readonly loginCount: Prisma.FieldRef<"Player", 'Int'>
   readonly lastLoginAt: Prisma.FieldRef<"Player", 'DateTime'>

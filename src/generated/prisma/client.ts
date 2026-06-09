@@ -44,3 +44,18 @@ export { Prisma }
  * 
  */
 export type Player = Prisma.PlayerModel
+/**
+ * Model Monster
+ * 
+ */
+export type Monster = Prisma.MonsterModel
+/**
+ * Model Map
+ * 
+ */
+export type Map = Prisma.MapModel
+/**
+ * Model SubMap
+ * 
+ */
+export type SubMap = Prisma.SubMapModel

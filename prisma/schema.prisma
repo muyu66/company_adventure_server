@@ -16,7 +16,7 @@ datasource db {
 model Player {
   id BigInt @id @default(autoincrement()) @db.UnsignedBigInt
 
-  accountId BigInt @unique(map: "uk_player_account_id") @map("account_id") @db.UnsignedBigInt
+  accountId BigInt @map("account_id") @db.UnsignedBigInt
 
   nickname String @db.VarChar(20)
   job      String @db.VarChar(20)
@@ -25,6 +25,8 @@ model Player {
   exp   BigInt @default(0) @db.UnsignedBigInt
 
   cash BigInt @default(0) @db.UnsignedBigInt
+
+  currSubMapId BigInt @map("curr_sub_map_id") @db.UnsignedBigInt
 
   /// 0正常 1禁言 2封号
   status Int @default(0) @db.UnsignedTinyInt
@@ -52,7 +54,80 @@ model Player {
 
   deletedAt DateTime? @map("deleted_at") @db.DateTime(0)
 
-  @@index([job], map: "idx_player_job")
-  @@index([deletedAt], map: "idx_player_deleted_at")
   @@map("player")
+}
+
+model Monster {
+  id       BigInt @id @default(autoincrement()) @db.UnsignedBigInt
+  subMapId BigInt @map("sub_map_id") @db.UnsignedBigInt
+
+  name         String @db.VarChar(20)
+  spriteFrames String @map("sprite_frames") @db.VarChar(20)
+
+  exp Int @default(0) @map("exp") @db.UnsignedInt
+
+  hp  Int @default(0) @map("hp") @db.UnsignedInt
+  atk Int @default(0) @map("atk") @db.UnsignedInt
+  def Int @default(0) @map("def") @db.UnsignedInt
+
+  crit    Int @default(0) @map("crit") @db.UnsignedSmallInt
+  critDmg Int @default(0) @map("crit_dmg") @db.UnsignedSmallInt
+
+  atkSpeed Int @default(0) @map("atk_speed") @db.UnsignedSmallInt
+
+  critRes    Int @default(0) @map("crit_res") @db.UnsignedSmallInt
+  critDmgRes Int @default(0) @map("crit_dmg_res") @db.UnsignedSmallInt
+
+  speed    Int @default(0) @map("speed") @db.UnsignedSmallInt
+  atkRange Int @default(0) @map("atk_range") @db.UnsignedSmallInt
+
+  createdAt DateTime  @default(now()) @map("created_at")
+  updatedAt DateTime  @updatedAt @map("updated_at")
+  deletedAt DateTime? @map("deleted_at")
+
+  @@map("monster")
+}
+
+model Map {
+  id BigInt @id @default(autoincrement()) @db.UnsignedBigInt
+
+  name String @db.VarChar(20)
+
+  type String @db.VarChar(20)
+
+  limited Int @default(0) @db.UnsignedTinyInt
+  sort    Int @db.UnsignedTinyInt
+
+  createdAt DateTime  @default(now()) @map("created_at")
+  updatedAt DateTime  @updatedAt @map("updated_at")
+  deletedAt DateTime? @map("deleted_at")
+
+  subMaps SubMap[]
+
+  @@map("map")
+}
+
+model SubMap {
+  id BigInt @id @default(autoincrement()) @db.UnsignedBigInt
+
+  mapId BigInt @map("map_id") @db.UnsignedBigInt
+
+  background String @db.VarChar(40)
+
+  unlockLevel Int @map("unlock_level") @db.UnsignedTinyInt
+
+  monsterLevel Int @map("monster_level") @db.UnsignedTinyInt
+
+  sort Int @db.UnsignedTinyInt
+
+  monsterIds Json @map("monster_ids")
+
+  createdAt DateTime  @default(now()) @map("created_at")
+  updatedAt DateTime  @updatedAt @map("updated_at")
+  deletedAt DateTime? @map("deleted_at")
+
+  map Map @relation(fields: [mapId], references: [id])
+
+  @@index([mapId])
+  @@map("sub_map")
 }

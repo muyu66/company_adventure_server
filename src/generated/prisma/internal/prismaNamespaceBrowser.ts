@@ -51,7 +51,10 @@ export const AnyNull = runtime.AnyNull
 
 
 export const ModelName = {
-  Player: 'Player'
+  Player: 'Player',
+  Monster: 'Monster',
+  Map: 'Map',
+  SubMap: 'SubMap'
 } as const
 
 export type ModelName = (typeof ModelName)[keyof typeof ModelName]
@@ -78,6 +81,7 @@ export const PlayerScalarFieldEnum = {
   level: 'level',
   exp: 'exp',
   cash: 'cash',
+  currSubMapId: 'currSubMapId',
   status: 'status',
   loginCount: 'loginCount',
   lastLoginAt: 'lastLoginAt',
@@ -97,12 +101,73 @@ export const PlayerScalarFieldEnum = {
 export type PlayerScalarFieldEnum = (typeof PlayerScalarFieldEnum)[keyof typeof PlayerScalarFieldEnum]
 
 
+export const MonsterScalarFieldEnum = {
+  id: 'id',
+  subMapId: 'subMapId',
+  name: 'name',
+  spriteFrames: 'spriteFrames',
+  exp: 'exp',
+  hp: 'hp',
+  atk: 'atk',
+  def: 'def',
+  crit: 'crit',
+  critDmg: 'critDmg',
+  atkSpeed: 'atkSpeed',
+  critRes: 'critRes',
+  critDmgRes: 'critDmgRes',
+  speed: 'speed',
+  atkRange: 'atkRange',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt',
+  deletedAt: 'deletedAt'
+} as const
+
+export type MonsterScalarFieldEnum = (typeof MonsterScalarFieldEnum)[keyof typeof MonsterScalarFieldEnum]
+
+
+export const MapScalarFieldEnum = {
+  id: 'id',
+  name: 'name',
+  type: 'type',
+  limited: 'limited',
+  sort: 'sort',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt',
+  deletedAt: 'deletedAt'
+} as const
+
+export type MapScalarFieldEnum = (typeof MapScalarFieldEnum)[keyof typeof MapScalarFieldEnum]
+
+
+export const SubMapScalarFieldEnum = {
+  id: 'id',
+  mapId: 'mapId',
+  background: 'background',
+  unlockLevel: 'unlockLevel',
+  monsterLevel: 'monsterLevel',
+  sort: 'sort',
+  monsterIds: 'monsterIds',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt',
+  deletedAt: 'deletedAt'
+} as const
+
+export type SubMapScalarFieldEnum = (typeof SubMapScalarFieldEnum)[keyof typeof SubMapScalarFieldEnum]
+
+
 export const SortOrder = {
   asc: 'asc',
   desc: 'desc'
 } as const
 
 export type SortOrder = (typeof SortOrder)[keyof typeof SortOrder]
+
+
+export const JsonNullValueInput = {
+  JsonNull: JsonNull
+} as const
+
+export type JsonNullValueInput = (typeof JsonNullValueInput)[keyof typeof JsonNullValueInput]
 
 
 export const NullsOrder = {
@@ -119,4 +184,44 @@ export const PlayerOrderByRelevanceFieldEnum = {
 } as const
 
 export type PlayerOrderByRelevanceFieldEnum = (typeof PlayerOrderByRelevanceFieldEnum)[keyof typeof PlayerOrderByRelevanceFieldEnum]
+
+
+export const MonsterOrderByRelevanceFieldEnum = {
+  name: 'name',
+  spriteFrames: 'spriteFrames'
+} as const
+
+export type MonsterOrderByRelevanceFieldEnum = (typeof MonsterOrderByRelevanceFieldEnum)[keyof typeof MonsterOrderByRelevanceFieldEnum]
+
+
+export const MapOrderByRelevanceFieldEnum = {
+  name: 'name',
+  type: 'type'
+} as const
+
+export type MapOrderByRelevanceFieldEnum = (typeof MapOrderByRelevanceFieldEnum)[keyof typeof MapOrderByRelevanceFieldEnum]
+
+
+export const JsonNullValueFilter = {
+  DbNull: DbNull,
+  JsonNull: JsonNull,
+  AnyNull: AnyNull
+} as const
+
+export type JsonNullValueFilter = (typeof JsonNullValueFilter)[keyof typeof JsonNullValueFilter]
+
+
+export const QueryMode = {
+  default: 'default',
+  insensitive: 'insensitive'
+} as const
+
+export type QueryMode = (typeof QueryMode)[keyof typeof QueryMode]
+
+
+export const SubMapOrderByRelevanceFieldEnum = {
+  background: 'background'
+} as const
+
+export type SubMapOrderByRelevanceFieldEnum = (typeof SubMapOrderByRelevanceFieldEnum)[keyof typeof SubMapOrderByRelevanceFieldEnum]
 

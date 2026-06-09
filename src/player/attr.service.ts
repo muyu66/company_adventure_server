@@ -1,7 +1,11 @@
 import { Injectable } from '@nestjs/common';
 import { PrismaService } from 'src/prisma.service';
 import { Job } from './player.const';
-import { PlayerAddAttrReq } from './schema/player.schema';
+import {
+  PlayerAddAttrReq,
+  PlayerAddAttrRes,
+  PlayerAddAttrResSchema,
+} from './schema/player.schema';
 import { PlayerService } from './player.service';
 import { sum } from 'es-toolkit';
 
@@ -17,7 +21,10 @@ export class AttrService {
    * @param playerId
    * @param attrReq
    */
-  async updateAttr(playerId: bigint, attrReq: PlayerAddAttrReq): Promise<void> {
+  async updateAttr(
+    playerId: bigint,
+    attrReq: PlayerAddAttrReq,
+  ): Promise<PlayerAddAttrRes> {
     // 校验
     const addPointCount = sum([
       attrReq.attrTalent,
@@ -33,7 +40,7 @@ export class AttrService {
     }
 
     // 更新数据
-    await this.prisma.player.update({
+    const res = await this.prisma.player.update({
       where: {
         id: playerId,
       },
@@ -61,6 +68,7 @@ export class AttrService {
         },
       },
     });
+    return PlayerAddAttrResSchema.parse(res);
   }
 
   /**

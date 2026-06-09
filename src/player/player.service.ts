@@ -1,8 +1,8 @@
 import { Injectable } from '@nestjs/common';
 import { PrismaService } from 'src/prisma.service';
 import { Player } from '../generated/prisma/client';
-import { PlayerSchema, PlayerDetailRes } from './schema/player.schema';
 import { UnitType } from './player.const';
+import { PlayerInfoRes, PlayerInfoSchema } from './schema/player.schema';
 import {
   getAggro,
   getAtk,
@@ -34,10 +34,10 @@ export class PlayerService {
     return [await this.getPlayer(playerId)];
   }
 
-  getPlayersDetails(player: Player[]): PlayerDetailRes[] {
+  getPlayersInfo(player: Player[]): PlayerInfoRes[] {
     return player.map((player) => {
-      const base = PlayerSchema.parse(player);
-      const detail: PlayerDetailRes = {
+      const base = PlayerInfoSchema.parse(player);
+      const info: PlayerInfoRes = {
         ...base,
         team: 1,
         type: UnitType.PLAYER,
@@ -55,7 +55,7 @@ export class PlayerService {
         critRes: getCritRes(player),
         critDmgRes: getCritDmgRes(player),
       };
-      return detail;
+      return info;
     });
   }
 }
