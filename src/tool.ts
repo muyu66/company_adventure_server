@@ -12,7 +12,7 @@ const generateRandomId = customAlphabet('1234567890qwertyuiopasdfghjklzxcvbnm');
 export function getHp(player: Player): number {
   switch (player.job) {
     case Job.CODER.toString():
-      return 100 + player.attrPhysical * 2;
+      return 100 + player.attrPhysical * 20;
     default:
       return 100;
   }
@@ -26,9 +26,9 @@ export function getHp(player: Player): number {
 export function getMp(player: Player): number {
   switch (player.job) {
     case Job.CODER.toString():
-      return 100 + player.attrPhysical * 2;
+      return 30 + player.attrPhysical * 6;
     default:
-      return 100;
+      return 30;
   }
 }
 
@@ -40,9 +40,9 @@ export function getMp(player: Player): number {
 export function getAtk(player: Player): number {
   switch (player.job) {
     case Job.CODER.toString():
-      return 100 + player.attrPhysical * 2;
+      return 10 + player.attrLogic * 5;
     default:
-      return 100;
+      return 10;
   }
 }
 
@@ -54,9 +54,9 @@ export function getAtk(player: Player): number {
 export function getDef(player: Player): number {
   switch (player.job) {
     case Job.CODER.toString():
-      return 100 + player.attrPhysical * 2;
+      return player.attrImagination * 2;
     default:
-      return 100;
+      return 0;
   }
 }
 
@@ -68,7 +68,7 @@ export function getDef(player: Player): number {
 export function getAggro(player: Player): number {
   switch (player.job) {
     case Job.CODER.toString():
-      return 100 + player.attrPhysical * 2;
+      return 100 + player.attrCharm * 1;
     default:
       return 100;
   }
@@ -82,9 +82,9 @@ export function getAggro(player: Player): number {
 export function getCrit(player: Player): number {
   switch (player.job) {
     case Job.CODER.toString():
-      return 100 + player.attrPhysical * 2;
+      return player.attrTalent * 1;
     default:
-      return 100;
+      return 0;
   }
 }
 
@@ -96,9 +96,9 @@ export function getCrit(player: Player): number {
 export function getCritDmg(player: Player): number {
   switch (player.job) {
     case Job.CODER.toString():
-      return 100 + player.attrPhysical * 2;
+      return 150 + player.attrTalent * 2;
     default:
-      return 100;
+      return 150;
   }
 }
 
@@ -110,9 +110,9 @@ export function getCritDmg(player: Player): number {
 export function getCritRes(player: Player): number {
   switch (player.job) {
     case Job.CODER.toString():
-      return 100 + player.attrPhysical * 2;
+      return player.attrBoldness * 1;
     default:
-      return 100;
+      return 0;
   }
 }
 
@@ -124,9 +124,9 @@ export function getCritRes(player: Player): number {
 export function getCritDmgRes(player: Player): number {
   switch (player.job) {
     case Job.CODER.toString():
-      return 100 + player.attrPhysical * 2;
+      return player.attrBoldness * 2;
     default:
-      return 100;
+      return 0;
   }
 }
 
@@ -166,7 +166,7 @@ export function getAttackRange(player: Player): number {
 export function getAtkSpeed(player: Player): number {
   switch (player.job) {
     case Job.CODER.toString():
-      return 100;
+      return 100 + player.attrLogic * 2;
     default:
       return 100;
   }

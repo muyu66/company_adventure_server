@@ -1,7 +1,23 @@
 import { z } from 'zod';
 import { Job, UnitType } from '../player.const';
 
-export const UnitInfoSchema = z.object({
+export const UnitDataSchema = z.object({
+  hp: z.number(),
+  mp: z.number(),
+  atk: z.number(),
+  def: z.number(),
+  aggro: z.number(),
+  crit: z.number(),
+  critDmg: z.number(),
+  atkSpeed: z.number(),
+  critRes: z.number(),
+  critDmgRes: z.number(),
+  speed: z.number(),
+  atkRange: z.number(),
+});
+export type UnitDataRes = z.infer<typeof UnitDataSchema>;
+
+export const UnitInfoSchema = UnitDataSchema.extend({
   id: z.string(),
   name: z.string(),
   team: z.number(),

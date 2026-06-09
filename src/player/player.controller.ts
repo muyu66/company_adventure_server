@@ -1,11 +1,13 @@
 import { Body, Controller, Get, Post } from '@nestjs/common';
+import { AttrService } from './attr.service';
 import { PlayerService } from './player.service';
 import {
   type PlayerAddAttrReq,
   PlayerAddAttrRes,
   PlayerInfoRes,
+  type UnitDataRes,
 } from './schema/player.schema';
-import { AttrService } from './attr.service';
+import { Job } from './player.const';
 
 @Controller('player')
 export class PlayerController {
@@ -29,5 +31,11 @@ export class PlayerController {
   @Post('update_attr')
   async updateAttr(@Body() body: PlayerAddAttrReq): Promise<PlayerAddAttrRes> {
     return this.attrService.updateAttr(1n, body);
+  }
+
+  @Post('preview_attr')
+  getAttrPreview(@Body() body: PlayerAddAttrReq): UnitDataRes {
+    // Job从token里拿，和playerId一个逻辑，job作为不变项，可行
+    return this.attrService.getPreviewAttr(Job.CODER, body);
   }
 }

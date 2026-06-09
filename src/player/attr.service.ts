@@ -1,13 +1,30 @@
 import { Injectable } from '@nestjs/common';
+import { sum } from 'es-toolkit';
+import { Player } from 'src/generated/prisma/client';
 import { PrismaService } from 'src/prisma.service';
-import { Job } from './player.const';
+import {
+  getAggro,
+  getAtk,
+  getAtkSpeed,
+  getAttackRange,
+  getCrit,
+  getCritDmg,
+  getCritDmgRes,
+  getCritRes,
+  getDef,
+  getHp,
+  getMp,
+  getSpeed,
+} from 'src/tool';
+import { PlayerService } from './player.service';
 import {
   PlayerAddAttrReq,
   PlayerAddAttrRes,
   PlayerAddAttrResSchema,
+  UnitDataRes,
+  UnitDataSchema,
 } from './schema/player.schema';
-import { PlayerService } from './player.service';
-import { sum } from 'es-toolkit';
+import { Job } from './player.const';
 
 @Injectable()
 export class AttrService {
@@ -15,6 +32,33 @@ export class AttrService {
     private readonly prisma: PrismaService,
     private readonly playerService: PlayerService,
   ) {}
+
+  /**
+   * 获取属性点预览
+   * 给我属性点，我给你计算后的属性
+   * @param req
+   * @returns
+   */
+  getPreviewAttr(job: Job, req: PlayerAddAttrReq): UnitDataRes {
+    const playerMock = {
+      ...req,
+      job,
+    } as Player;
+    return UnitDataSchema.parse({
+      hp: getHp(playerMock),
+      mp: getMp(playerMock),
+      atk: getAtk(playerMock),
+      def: getDef(playerMock),
+      aggro: getAggro(playerMock),
+      crit: getCrit(playerMock),
+      critDmg: getCritDmg(playerMock),
+      atkSpeed: getAtkSpeed(playerMock),
+      critRes: getCritRes(playerMock),
+      critDmgRes: getCritDmgRes(playerMock),
+      speed: getSpeed(playerMock),
+      atkRange: getAttackRange(playerMock),
+    });
+  }
 
   /**
    * 更新属性点
@@ -69,98 +113,5 @@ export class AttrService {
       },
     });
     return PlayerAddAttrResSchema.parse(res);
-  }
-
-  /**
-   * 获取角色属性规则，为了给前端在加点时提供属性增加方向预览
-   * 比如点1点口才，就知道攻击力是可以上升的
-   * @param job
-   * @returns
-   */
-  getRule(job: Job) {
-    switch (job) {
-      case Job.CODER:
-        return {
-          attrTalent: {
-            hp: 0,
-            mp: 0,
-            atk: 0,
-            def: 0,
-            aggro: 0,
-            crit: 1,
-            critDmg: 1,
-            atkSpeed: 0,
-            critRes: 0,
-            critDmgRes: 0,
-            speed: 0,
-          },
-          attrPhysical: {
-            hp: 1,
-            mp: 1,
-            atk: 0,
-            def: 0,
-            aggro: 0,
-            crit: 0,
-            critDmg: 0,
-            atkSpeed: 0,
-            critRes: 0,
-            critDmgRes: 0,
-            speed: 1,
-          },
-          attrLogic: {
-            hp: 0,
-            mp: 0,
-            atk: 1,
-            def: 0,
-            aggro: 0,
-            crit: 0,
-            critDmg: 0,
-            atkSpeed: 1,
-            critRes: 0,
-            critDmgRes: 0,
-            speed: 0,
-          },
-          attrImagination: {
-            hp: 0,
-            mp: 0,
-            atk: 0,
-            def: 1,
-            aggro: 0,
-            crit: 0,
-            critDmg: 0,
-            atkSpeed: 0,
-            critRes: 0,
-            critDmgRes: 0,
-            speed: 0,
-          },
-          attrBoldness: {
-            hp: 0,
-            mp: 0,
-            atk: 0,
-            def: 0,
-            aggro: 0,
-            crit: 0,
-            critDmg: 0,
-            atkSpeed: 0,
-            critRes: 1,
-            critDmgRes: 1,
-            speed: 0,
-            attackRange: 0,
-          },
-          attrCharm: {
-            hp: 0,
-            mp: 0,
-            atk: 0,
-            def: 0,
-            aggro: 1,
-            crit: 0,
-            critDmg: 0,
-            atkSpeed: 0,
-            critRes: 0,
-            critDmgRes: 0,
-            speed: 0,
-          },
-        };
-    }
   }
 }
