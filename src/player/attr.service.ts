@@ -16,15 +16,14 @@ import {
   getMp,
   getSpeed,
 } from 'src/tool';
+import { Job } from './player.const';
 import { PlayerService } from './player.service';
 import {
   PlayerAddAttrReq,
   PlayerAddAttrRes,
   PlayerAddAttrResSchema,
   UnitDataRes,
-  UnitDataSchema,
 } from './schema/player.schema';
-import { Job } from './player.const';
 
 @Injectable()
 export class AttrService {
@@ -44,7 +43,7 @@ export class AttrService {
       ...req,
       job,
     } as Player;
-    return UnitDataSchema.parse({
+    return {
       hp: getHp(playerMock),
       mp: getMp(playerMock),
       atk: getAtk(playerMock),
@@ -57,7 +56,7 @@ export class AttrService {
       critDmgRes: getCritDmgRes(playerMock),
       speed: getSpeed(playerMock),
       atkRange: getAttackRange(playerMock),
-    });
+    };
   }
 
   /**

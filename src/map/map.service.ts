@@ -1,12 +1,12 @@
 import { Injectable } from '@nestjs/common';
 import { PrismaService } from 'src/prisma.service';
-import { MapSchema } from './schema/map.schema';
+import { MapRes, MapSchema } from './schema/map.schema';
 
 @Injectable()
 export class MapService {
   constructor(private readonly prisma: PrismaService) {}
 
-  async getMaps() {
+  async getMaps(): Promise<MapRes[]> {
     const maps = await this.prisma.map.findMany({
       include: {
         subMaps: true,

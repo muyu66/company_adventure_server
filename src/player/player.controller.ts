@@ -1,13 +1,14 @@
 import { Body, Controller, Get, Post } from '@nestjs/common';
+import type { StringIdReq } from 'src/schema';
 import { AttrService } from './attr.service';
+import { Job } from './player.const';
 import { PlayerService } from './player.service';
-import {
-  type PlayerAddAttrReq,
+import type {
+  PlayerAddAttrReq,
   PlayerAddAttrRes,
   PlayerInfoRes,
-  type UnitDataRes,
+  UnitDataRes,
 } from './schema/player.schema';
-import { Job } from './player.const';
 
 @Controller('player')
 export class PlayerController {
@@ -37,5 +38,10 @@ export class PlayerController {
   getAttrPreview(@Body() body: PlayerAddAttrReq): UnitDataRes {
     // Job从token里拿，和playerId一个逻辑，job作为不变项，可行
     return this.attrService.getPreviewAttr(Job.CODER, body);
+  }
+
+  @Post('change_sub_map')
+  async changeSubMap(@Body() body: StringIdReq): Promise<boolean> {
+    return this.playerService.updatePlayerSubMap(1n, BigInt(body.id));
   }
 }

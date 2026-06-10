@@ -10,6 +10,8 @@ export enum Job {
   SINGER = 'singer',
   // 总统
   PRESIDENT = 'president',
-  // 医生
-  DOCTOR = 'doctor',
+  // 宅男
+  XXXXX = 'xxxx',
+  // 临时工
+  TEMP_WORKER = 'temp_worker',
 }

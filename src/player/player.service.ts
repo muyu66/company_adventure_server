@@ -34,6 +34,42 @@ export class PlayerService {
     return [await this.getPlayer(playerId)];
   }
 
+  /**
+   * 更新玩家当前所在的子地图ID
+   * @param playerId
+   * @param subMapId
+   * @returns
+   */
+  async updatePlayerSubMap(
+    playerId: bigint,
+    subMapId: bigint,
+  ): Promise<boolean> {
+    // 校验
+    const player = await this.getPlayer(playerId);
+    // 不改变，则不切换地图
+    if (player.currSubMapId === subMapId) {
+      return false;
+    }
+    const subMap = await this.prisma.subMap.findUniqueOrThrow({
+      where: {
+        id: subMapId,
+      },
+    });
+    if (subMap.unlockLevel > player.level) {
+      throw new Error('当前地图未解锁');
+    }
+
+    await this.prisma.player.update({
+      where: {
+        id: playerId,
+      },
+      data: {
+        currSubMapId: subMapId,
+      },
+    });
+    return true;
+  }
+
   getPlayersInfo(player: Player[]): PlayerInfoRes[] {
     return player.map((player) => {
       return PlayerInfoSchema.parse({
