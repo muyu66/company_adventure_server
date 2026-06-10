@@ -17,6 +17,7 @@ import {
 import { Player } from '../generated/prisma/client';
 import { UnitType } from './player.const';
 import { PlayerInfoRes, PlayerInfoSchema } from './schema/player.schema';
+import { SubMapRes, SubMapSchema } from 'src/map/schema/map.schema';
 
 @Injectable()
 export class PlayerService {
@@ -28,6 +29,21 @@ export class PlayerService {
         id: playerId,
       },
     });
+  }
+
+  /**
+   * 获取我当前的子地图
+   * @param playerId
+   * @returns
+   */
+  async getMySubMap(playerId: bigint): Promise<SubMapRes> {
+    const player = await this.getPlayer(playerId);
+    const subMap = await this.prisma.subMap.findUniqueOrThrow({
+      where: {
+        id: player.currSubMapId,
+      },
+    });
+    return SubMapSchema.parse(subMap);
   }
 
   async getTeam(playerId: bigint): Promise<Player[]> {

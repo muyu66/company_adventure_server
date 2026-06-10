@@ -9,6 +9,7 @@ import type {
   PlayerInfoRes,
   UnitDataRes,
 } from './schema/player.schema';
+import { SubMapRes } from 'src/map/schema/map.schema';
 
 @Controller('player')
 export class PlayerController {
@@ -27,6 +28,11 @@ export class PlayerController {
   async getMy(): Promise<PlayerInfoRes> {
     const player = await this.playerService.getPlayer(1n);
     return this.playerService.getPlayersInfo([player])[0];
+  }
+
+  @Get('my_sub_map')
+  async getMySubMap(): Promise<SubMapRes> {
+    return this.playerService.getMySubMap(1n);
   }
 
   @Post('update_attr')

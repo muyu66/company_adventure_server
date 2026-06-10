@@ -1,6 +1,11 @@
 import { Injectable } from '@nestjs/common';
 import { PrismaService } from 'src/prisma.service';
-import { MapRes, MapSchema } from './schema/map.schema';
+import {
+  MapRes,
+  MapSchema,
+  SubMapRes,
+  SubMapSchema,
+} from './schema/map.schema';
 
 @Injectable()
 export class MapService {
@@ -18,5 +23,14 @@ export class MapService {
         subMaps: map.subMaps,
       });
     });
+  }
+
+  async getSubMap(subMapId: bigint): Promise<SubMapRes> {
+    const subMap = await this.prisma.subMap.findUniqueOrThrow({
+      where: {
+        id: subMapId,
+      },
+    });
+    return SubMapSchema.parse(subMap);
   }
 }
