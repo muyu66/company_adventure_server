@@ -15,7 +15,7 @@ import {
   getHp,
   getMp,
   getSpeed,
-} from 'src/tool';
+} from 'src/game.tool';
 import { Job } from './player.const';
 import { PlayerService } from './player.service';
 import {

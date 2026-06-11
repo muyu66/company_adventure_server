@@ -13,7 +13,7 @@ import {
   getHp,
   getMp,
   getSpeed,
-} from 'src/tool';
+} from 'src/game.tool';
 import { Player } from '../generated/prisma/client';
 import { UnitType } from './player.const';
 import { PlayerInfoRes, PlayerInfoSchema } from './schema/player.schema';

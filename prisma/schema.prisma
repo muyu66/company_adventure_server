@@ -131,3 +131,51 @@ model SubMap {
   @@index([mapId])
   @@map("sub_map")
 }
+
+model PlayerSkill {
+  id BigInt @id @default(autoincrement()) @db.UnsignedBigInt
+
+  playerId BigInt @map("player_id") @db.UnsignedBigInt
+  skillId  BigInt @map("skill_id") @db.UnsignedBigInt
+  level    Int    @default(1) @db.UnsignedTinyInt
+  slot     Int?   @db.UnsignedTinyInt
+  skill    Skill  @relation(fields: [skillId], references: [id])
+
+  createdAt DateTime  @default(now()) @map("created_at") @db.DateTime(0)
+  updatedAt DateTime  @updatedAt @map("updated_at") @db.DateTime(0)
+  deletedAt DateTime? @map("deleted_at") @db.DateTime(0)
+
+  @@unique([playerId, skillId])
+  @@unique([playerId, slot])
+  @@map("player_skill")
+}
+
+model Skill {
+  id BigInt @id @default(autoincrement()) @db.UnsignedBigInt
+
+  name String @db.VarChar(64)
+  desc String @db.VarChar(20)
+
+  job String @db.VarChar(20)
+
+  rarity Int @db.UnsignedTinyInt
+  range  Int @db.UnsignedSmallInt
+
+  cooldown String  @db.VarChar(64)
+  costMp   String? @map("cost_mp") @db.VarChar(64)
+
+  icon String @db.VarChar(255)
+
+  sort Int @default(0) @db.UnsignedInt
+
+  effects     Json
+  effectsDesc Json @map("effects_desc")
+
+  createdAt DateTime  @default(now()) @map("created_at") @db.DateTime(0)
+  updatedAt DateTime  @updatedAt @map("updated_at") @db.DateTime(0)
+  deletedAt DateTime? @map("deleted_at") @db.DateTime(0)
+
+  playerSkills PlayerSkill[]
+
+  @@map("skill")
+}

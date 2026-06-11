@@ -59,3 +59,13 @@ export type Map = Prisma.MapModel
  * 
  */
 export type SubMap = Prisma.SubMapModel
+/**
+ * Model PlayerSkill
+ * 
+ */
+export type PlayerSkill = Prisma.PlayerSkillModel
+/**
+ * Model Skill
+ * 
+ */
+export type Skill = Prisma.SkillModel

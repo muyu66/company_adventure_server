@@ -54,7 +54,9 @@ export const ModelName = {
   Player: 'Player',
   Monster: 'Monster',
   Map: 'Map',
-  SubMap: 'SubMap'
+  SubMap: 'SubMap',
+  PlayerSkill: 'PlayerSkill',
+  Skill: 'Skill'
 } as const
 
 export type ModelName = (typeof ModelName)[keyof typeof ModelName]
@@ -155,6 +157,41 @@ export const SubMapScalarFieldEnum = {
 export type SubMapScalarFieldEnum = (typeof SubMapScalarFieldEnum)[keyof typeof SubMapScalarFieldEnum]
 
 
+export const PlayerSkillScalarFieldEnum = {
+  id: 'id',
+  playerId: 'playerId',
+  skillId: 'skillId',
+  level: 'level',
+  slot: 'slot',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt',
+  deletedAt: 'deletedAt'
+} as const
+
+export type PlayerSkillScalarFieldEnum = (typeof PlayerSkillScalarFieldEnum)[keyof typeof PlayerSkillScalarFieldEnum]
+
+
+export const SkillScalarFieldEnum = {
+  id: 'id',
+  name: 'name',
+  desc: 'desc',
+  job: 'job',
+  rarity: 'rarity',
+  range: 'range',
+  cooldown: 'cooldown',
+  costMp: 'costMp',
+  icon: 'icon',
+  sort: 'sort',
+  effects: 'effects',
+  effectsDesc: 'effectsDesc',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt',
+  deletedAt: 'deletedAt'
+} as const
+
+export type SkillScalarFieldEnum = (typeof SkillScalarFieldEnum)[keyof typeof SkillScalarFieldEnum]
+
+
 export const SortOrder = {
   asc: 'asc',
   desc: 'desc'
@@ -224,4 +261,16 @@ export const SubMapOrderByRelevanceFieldEnum = {
 } as const
 
 export type SubMapOrderByRelevanceFieldEnum = (typeof SubMapOrderByRelevanceFieldEnum)[keyof typeof SubMapOrderByRelevanceFieldEnum]
+
+
+export const SkillOrderByRelevanceFieldEnum = {
+  name: 'name',
+  desc: 'desc',
+  job: 'job',
+  cooldown: 'cooldown',
+  costMp: 'costMp',
+  icon: 'icon'
+} as const
+
+export type SkillOrderByRelevanceFieldEnum = (typeof SkillOrderByRelevanceFieldEnum)[keyof typeof SkillOrderByRelevanceFieldEnum]
 
