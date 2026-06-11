@@ -258,7 +258,7 @@ export type SkillGroupByOutputType = {
   rarity: number
   range: number
   cooldown: string
-  costMp: string | null
+  costMp: string
   icon: string
   sort: number
   effects: runtime.JsonValue
@@ -300,7 +300,7 @@ export type SkillWhereInput = {
   rarity?: Prisma.IntFilter<"Skill"> | number
   range?: Prisma.IntFilter<"Skill"> | number
   cooldown?: Prisma.StringFilter<"Skill"> | string
-  costMp?: Prisma.StringNullableFilter<"Skill"> | string | null
+  costMp?: Prisma.StringFilter<"Skill"> | string
   icon?: Prisma.StringFilter<"Skill"> | string
   sort?: Prisma.IntFilter<"Skill"> | number
   effects?: Prisma.JsonFilter<"Skill">
@@ -320,7 +320,7 @@ export type SkillOrderByWithRelationInput = {
   rarity?: Prisma.SortOrder
   range?: Prisma.SortOrder
   cooldown?: Prisma.SortOrder
-  costMp?: Prisma.SortOrderInput | Prisma.SortOrder
+  costMp?: Prisma.SortOrder
   icon?: Prisma.SortOrder
   sort?: Prisma.SortOrder
   effects?: Prisma.SortOrder
@@ -344,7 +344,7 @@ export type SkillWhereUniqueInput = Prisma.AtLeast<{
   rarity?: Prisma.IntFilter<"Skill"> | number
   range?: Prisma.IntFilter<"Skill"> | number
   cooldown?: Prisma.StringFilter<"Skill"> | string
-  costMp?: Prisma.StringNullableFilter<"Skill"> | string | null
+  costMp?: Prisma.StringFilter<"Skill"> | string
   icon?: Prisma.StringFilter<"Skill"> | string
   sort?: Prisma.IntFilter<"Skill"> | number
   effects?: Prisma.JsonFilter<"Skill">
@@ -364,7 +364,7 @@ export type SkillOrderByWithAggregationInput = {
   rarity?: Prisma.SortOrder
   range?: Prisma.SortOrder
   cooldown?: Prisma.SortOrder
-  costMp?: Prisma.SortOrderInput | Prisma.SortOrder
+  costMp?: Prisma.SortOrder
   icon?: Prisma.SortOrder
   sort?: Prisma.SortOrder
   effects?: Prisma.SortOrder
@@ -391,7 +391,7 @@ export type SkillScalarWhereWithAggregatesInput = {
   rarity?: Prisma.IntWithAggregatesFilter<"Skill"> | number
   range?: Prisma.IntWithAggregatesFilter<"Skill"> | number
   cooldown?: Prisma.StringWithAggregatesFilter<"Skill"> | string
-  costMp?: Prisma.StringNullableWithAggregatesFilter<"Skill"> | string | null
+  costMp?: Prisma.StringWithAggregatesFilter<"Skill"> | string
   icon?: Prisma.StringWithAggregatesFilter<"Skill"> | string
   sort?: Prisma.IntWithAggregatesFilter<"Skill"> | number
   effects?: Prisma.JsonWithAggregatesFilter<"Skill">
@@ -410,7 +410,7 @@ export type SkillCreateInput = {
   rarity: number
   range: number
   cooldown: string
-  costMp?: string | null
+  costMp: string
   icon: string
   sort?: number
   effects: Prisma.JsonNullValueInput | runtime.InputJsonValue
@@ -430,7 +430,7 @@ export type SkillUncheckedCreateInput = {
   rarity: number
   range: number
   cooldown: string
-  costMp?: string | null
+  costMp: string
   icon: string
   sort?: number
   effects: Prisma.JsonNullValueInput | runtime.InputJsonValue
@@ -450,7 +450,7 @@ export type SkillUpdateInput = {
   rarity?: Prisma.IntFieldUpdateOperationsInput | number
   range?: Prisma.IntFieldUpdateOperationsInput | number
   cooldown?: Prisma.StringFieldUpdateOperationsInput | string
-  costMp?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  costMp?: Prisma.StringFieldUpdateOperationsInput | string
   icon?: Prisma.StringFieldUpdateOperationsInput | string
   sort?: Prisma.IntFieldUpdateOperationsInput | number
   effects?: Prisma.JsonNullValueInput | runtime.InputJsonValue
@@ -470,7 +470,7 @@ export type SkillUncheckedUpdateInput = {
   rarity?: Prisma.IntFieldUpdateOperationsInput | number
   range?: Prisma.IntFieldUpdateOperationsInput | number
   cooldown?: Prisma.StringFieldUpdateOperationsInput | string
-  costMp?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  costMp?: Prisma.StringFieldUpdateOperationsInput | string
   icon?: Prisma.StringFieldUpdateOperationsInput | string
   sort?: Prisma.IntFieldUpdateOperationsInput | number
   effects?: Prisma.JsonNullValueInput | runtime.InputJsonValue
@@ -490,7 +490,7 @@ export type SkillCreateManyInput = {
   rarity: number
   range: number
   cooldown: string
-  costMp?: string | null
+  costMp: string
   icon: string
   sort?: number
   effects: Prisma.JsonNullValueInput | runtime.InputJsonValue
@@ -509,7 +509,7 @@ export type SkillUpdateManyMutationInput = {
   rarity?: Prisma.IntFieldUpdateOperationsInput | number
   range?: Prisma.IntFieldUpdateOperationsInput | number
   cooldown?: Prisma.StringFieldUpdateOperationsInput | string
-  costMp?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  costMp?: Prisma.StringFieldUpdateOperationsInput | string
   icon?: Prisma.StringFieldUpdateOperationsInput | string
   sort?: Prisma.IntFieldUpdateOperationsInput | number
   effects?: Prisma.JsonNullValueInput | runtime.InputJsonValue
@@ -528,7 +528,7 @@ export type SkillUncheckedUpdateManyInput = {
   rarity?: Prisma.IntFieldUpdateOperationsInput | number
   range?: Prisma.IntFieldUpdateOperationsInput | number
   cooldown?: Prisma.StringFieldUpdateOperationsInput | string
-  costMp?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  costMp?: Prisma.StringFieldUpdateOperationsInput | string
   icon?: Prisma.StringFieldUpdateOperationsInput | string
   sort?: Prisma.IntFieldUpdateOperationsInput | number
   effects?: Prisma.JsonNullValueInput | runtime.InputJsonValue
@@ -630,10 +630,6 @@ export type SkillUpdateOneRequiredWithoutPlayerSkillsNestedInput = {
   update?: Prisma.XOR<Prisma.XOR<Prisma.SkillUpdateToOneWithWhereWithoutPlayerSkillsInput, Prisma.SkillUpdateWithoutPlayerSkillsInput>, Prisma.SkillUncheckedUpdateWithoutPlayerSkillsInput>
 }
 
-export type NullableStringFieldUpdateOperationsInput = {
-  set?: string | null
-}
-
 export type SkillCreateWithoutPlayerSkillsInput = {
   id?: bigint | number
   name: string
@@ -643,7 +639,7 @@ export type SkillCreateWithoutPlayerSkillsInput = {
   rarity: number
   range: number
   cooldown: string
-  costMp?: string | null
+  costMp: string
   icon: string
   sort?: number
   effects: Prisma.JsonNullValueInput | runtime.InputJsonValue
@@ -662,7 +658,7 @@ export type SkillUncheckedCreateWithoutPlayerSkillsInput = {
   rarity: number
   range: number
   cooldown: string
-  costMp?: string | null
+  costMp: string
   icon: string
   sort?: number
   effects: Prisma.JsonNullValueInput | runtime.InputJsonValue
@@ -697,7 +693,7 @@ export type SkillUpdateWithoutPlayerSkillsInput = {
   rarity?: Prisma.IntFieldUpdateOperationsInput | number
   range?: Prisma.IntFieldUpdateOperationsInput | number
   cooldown?: Prisma.StringFieldUpdateOperationsInput | string
-  costMp?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  costMp?: Prisma.StringFieldUpdateOperationsInput | string
   icon?: Prisma.StringFieldUpdateOperationsInput | string
   sort?: Prisma.IntFieldUpdateOperationsInput | number
   effects?: Prisma.JsonNullValueInput | runtime.InputJsonValue
@@ -716,7 +712,7 @@ export type SkillUncheckedUpdateWithoutPlayerSkillsInput = {
   rarity?: Prisma.IntFieldUpdateOperationsInput | number
   range?: Prisma.IntFieldUpdateOperationsInput | number
   cooldown?: Prisma.StringFieldUpdateOperationsInput | string
-  costMp?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  costMp?: Prisma.StringFieldUpdateOperationsInput | string
   icon?: Prisma.StringFieldUpdateOperationsInput | string
   sort?: Prisma.IntFieldUpdateOperationsInput | number
   effects?: Prisma.JsonNullValueInput | runtime.InputJsonValue
@@ -819,7 +815,7 @@ export type $SkillPayload<ExtArgs extends runtime.Types.Extensions.InternalArgs 
     rarity: number
     range: number
     cooldown: string
-    costMp: string | null
+    costMp: string
     icon: string
     sort: number
     effects: runtime.JsonValue

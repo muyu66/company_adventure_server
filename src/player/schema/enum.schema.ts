@@ -23,3 +23,29 @@ export const SkillTypeSchema = z.enum([
 ]);
 
 export type SkillType = z.infer<typeof SkillTypeSchema>;
+
+export const SkillEffectTypeSchema = z.enum([
+  // 伤害
+  'damage',
+  // 治愈
+  'heal',
+  // 增益减益
+  'modify_stat',
+  // 召唤
+  'summon',
+  // 持续伤害
+  'dot',
+]);
+
+export type SkillEffectType = z.infer<typeof SkillEffectTypeSchema>;
+
+export const SkillEffectTargetSchema = z.enum([
+  // 自身
+  'self',
+  // 敌人
+  'enemy',
+  // 全部敌人
+  'all_enemy',
+]);
+
+export type SkillEffectTarget = z.infer<typeof SkillEffectTargetSchema>;

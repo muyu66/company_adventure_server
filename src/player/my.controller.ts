@@ -11,7 +11,7 @@ import type {
 } from './schema/player.schema';
 import { SubMapRes } from 'src/map/schema/map.schema';
 import { SkillService } from './skill.service';
-import { SkillInfoRes } from './schema/skill.schema';
+import { SkillData, SkillInfoRes } from './schema/skill.schema';
 
 @Controller('players/my')
 export class PlayerMyController {
@@ -61,5 +61,10 @@ export class PlayerMyController {
   @Post('uninstall_skill_slot')
   async uninstallSkillSlot(@Body() body: NumberIdReq): Promise<boolean> {
     return this.skillService.uninstallSkill(1n, body.id);
+  }
+
+  @Get('skill_data')
+  async getMySkillData(): Promise<SkillData[]> {
+    return this.skillService.getMySkillData(1n);
   }
 }

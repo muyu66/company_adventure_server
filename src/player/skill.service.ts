@@ -1,8 +1,15 @@
 import { Injectable } from '@nestjs/common';
 import { PrismaService } from 'src/prisma.service';
 import { findFirstMissing } from 'src/tool';
-import { SkillInfoRes, SkillInfoSchema } from './schema/skill.schema';
 import { PlayerService } from './player.service';
+import {
+  SkillData,
+  SkillDataSchema,
+  SkillEffectResSchema,
+  SkillEffectsSchema,
+  SkillInfoRes,
+  SkillInfoSchema,
+} from './schema/skill.schema';
 
 @Injectable()
 export class SkillService {
@@ -13,6 +20,7 @@ export class SkillService {
 
   /**
    * 获取我的技能列表
+   * (提供查看或者编辑用)
    * @param playerId
    * @returns
    */
@@ -39,6 +47,65 @@ export class SkillService {
           slot: playerSkill == null ? null : playerSkill.slot,
           level: playerSkill == null ? 0 : playerSkill.level,
           installed: playerSkill == null ? false : playerSkill.slot != null,
+        }),
+      );
+    }
+    return res;
+  }
+
+  /**
+   * 获取我的技能数据
+   * (实时战斗计算使用)
+   * @param playerId
+   * @returns
+   */
+  async getMySkillData(playerId: bigint): Promise<SkillData[]> {
+    const playerSkills = await this.prisma.playerSkill.findMany({
+      where: {
+        playerId,
+        level: {
+          gte: 1,
+        },
+        slot: {
+          not: null,
+        },
+      },
+      include: {
+        skill: true,
+      },
+    });
+
+    const res: SkillData[] = [];
+    for (const playerSkill of playerSkills) {
+      if (playerSkill.skill.effects == null) continue;
+      const effects = SkillEffectsSchema.parse(playerSkill.skill.effects);
+      res.push(
+        SkillDataSchema.parse({
+          ...playerSkill.skill,
+
+          effects: effects.map((effect) =>
+            SkillEffectResSchema.parse({
+              ...effect,
+              tick: effect.tick ?? null,
+              expr: effect.expr[playerSkill.level - 1],
+              duration: effect.duration
+                ? effect.duration[playerSkill.level - 1]
+                : 0,
+              summonInherit: effect.summonInherit
+                ? effect.summonInherit[playerSkill.level - 1]
+                : 0,
+            }),
+          ),
+
+          skillRange: playerSkill.skill.range,
+          cooldown: Number(
+            playerSkill.skill.cooldown.split(',')[playerSkill.level - 1],
+          ),
+          costMp: Number(
+            playerSkill.skill.costMp.split(',')[playerSkill.level - 1],
+          ),
+          slot: playerSkill == null ? null : playerSkill.slot,
+          level: playerSkill == null ? 0 : playerSkill.level,
         }),
       );
     }

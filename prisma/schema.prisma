@@ -162,8 +162,8 @@ model Skill {
   rarity Int @db.UnsignedTinyInt
   range  Int @db.UnsignedSmallInt
 
-  cooldown String  @db.VarChar(64)
-  costMp   String? @map("cost_mp") @db.VarChar(64)
+  cooldown String @db.VarChar(64)
+  costMp   String @map("cost_mp") @db.VarChar(64)
 
   icon String @db.VarChar(255)
 
