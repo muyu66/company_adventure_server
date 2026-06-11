@@ -43,6 +43,7 @@ export type SkillSumAggregateOutputType = {
 export type SkillMinAggregateOutputType = {
   id: bigint | null
   name: string | null
+  type: string | null
   desc: string | null
   job: string | null
   rarity: number | null
@@ -59,6 +60,7 @@ export type SkillMinAggregateOutputType = {
 export type SkillMaxAggregateOutputType = {
   id: bigint | null
   name: string | null
+  type: string | null
   desc: string | null
   job: string | null
   rarity: number | null
@@ -75,6 +77,7 @@ export type SkillMaxAggregateOutputType = {
 export type SkillCountAggregateOutputType = {
   id: number
   name: number
+  type: number
   desc: number
   job: number
   rarity: number
@@ -109,6 +112,7 @@ export type SkillSumAggregateInputType = {
 export type SkillMinAggregateInputType = {
   id?: true
   name?: true
+  type?: true
   desc?: true
   job?: true
   rarity?: true
@@ -125,6 +129,7 @@ export type SkillMinAggregateInputType = {
 export type SkillMaxAggregateInputType = {
   id?: true
   name?: true
+  type?: true
   desc?: true
   job?: true
   rarity?: true
@@ -141,6 +146,7 @@ export type SkillMaxAggregateInputType = {
 export type SkillCountAggregateInputType = {
   id?: true
   name?: true
+  type?: true
   desc?: true
   job?: true
   rarity?: true
@@ -246,6 +252,7 @@ export type SkillGroupByArgs<ExtArgs extends runtime.Types.Extensions.InternalAr
 export type SkillGroupByOutputType = {
   id: bigint
   name: string
+  type: string
   desc: string
   job: string
   rarity: number
@@ -287,6 +294,7 @@ export type SkillWhereInput = {
   NOT?: Prisma.SkillWhereInput | Prisma.SkillWhereInput[]
   id?: Prisma.BigIntFilter<"Skill"> | bigint | number
   name?: Prisma.StringFilter<"Skill"> | string
+  type?: Prisma.StringFilter<"Skill"> | string
   desc?: Prisma.StringFilter<"Skill"> | string
   job?: Prisma.StringFilter<"Skill"> | string
   rarity?: Prisma.IntFilter<"Skill"> | number
@@ -306,6 +314,7 @@ export type SkillWhereInput = {
 export type SkillOrderByWithRelationInput = {
   id?: Prisma.SortOrder
   name?: Prisma.SortOrder
+  type?: Prisma.SortOrder
   desc?: Prisma.SortOrder
   job?: Prisma.SortOrder
   rarity?: Prisma.SortOrder
@@ -329,6 +338,7 @@ export type SkillWhereUniqueInput = Prisma.AtLeast<{
   OR?: Prisma.SkillWhereInput[]
   NOT?: Prisma.SkillWhereInput | Prisma.SkillWhereInput[]
   name?: Prisma.StringFilter<"Skill"> | string
+  type?: Prisma.StringFilter<"Skill"> | string
   desc?: Prisma.StringFilter<"Skill"> | string
   job?: Prisma.StringFilter<"Skill"> | string
   rarity?: Prisma.IntFilter<"Skill"> | number
@@ -348,6 +358,7 @@ export type SkillWhereUniqueInput = Prisma.AtLeast<{
 export type SkillOrderByWithAggregationInput = {
   id?: Prisma.SortOrder
   name?: Prisma.SortOrder
+  type?: Prisma.SortOrder
   desc?: Prisma.SortOrder
   job?: Prisma.SortOrder
   rarity?: Prisma.SortOrder
@@ -374,6 +385,7 @@ export type SkillScalarWhereWithAggregatesInput = {
   NOT?: Prisma.SkillScalarWhereWithAggregatesInput | Prisma.SkillScalarWhereWithAggregatesInput[]
   id?: Prisma.BigIntWithAggregatesFilter<"Skill"> | bigint | number
   name?: Prisma.StringWithAggregatesFilter<"Skill"> | string
+  type?: Prisma.StringWithAggregatesFilter<"Skill"> | string
   desc?: Prisma.StringWithAggregatesFilter<"Skill"> | string
   job?: Prisma.StringWithAggregatesFilter<"Skill"> | string
   rarity?: Prisma.IntWithAggregatesFilter<"Skill"> | number
@@ -392,6 +404,7 @@ export type SkillScalarWhereWithAggregatesInput = {
 export type SkillCreateInput = {
   id?: bigint | number
   name: string
+  type: string
   desc: string
   job: string
   rarity: number
@@ -411,6 +424,7 @@ export type SkillCreateInput = {
 export type SkillUncheckedCreateInput = {
   id?: bigint | number
   name: string
+  type: string
   desc: string
   job: string
   rarity: number
@@ -430,6 +444,7 @@ export type SkillUncheckedCreateInput = {
 export type SkillUpdateInput = {
   id?: Prisma.BigIntFieldUpdateOperationsInput | bigint | number
   name?: Prisma.StringFieldUpdateOperationsInput | string
+  type?: Prisma.StringFieldUpdateOperationsInput | string
   desc?: Prisma.StringFieldUpdateOperationsInput | string
   job?: Prisma.StringFieldUpdateOperationsInput | string
   rarity?: Prisma.IntFieldUpdateOperationsInput | number
@@ -449,6 +464,7 @@ export type SkillUpdateInput = {
 export type SkillUncheckedUpdateInput = {
   id?: Prisma.BigIntFieldUpdateOperationsInput | bigint | number
   name?: Prisma.StringFieldUpdateOperationsInput | string
+  type?: Prisma.StringFieldUpdateOperationsInput | string
   desc?: Prisma.StringFieldUpdateOperationsInput | string
   job?: Prisma.StringFieldUpdateOperationsInput | string
   rarity?: Prisma.IntFieldUpdateOperationsInput | number
@@ -468,6 +484,7 @@ export type SkillUncheckedUpdateInput = {
 export type SkillCreateManyInput = {
   id?: bigint | number
   name: string
+  type: string
   desc: string
   job: string
   rarity: number
@@ -486,6 +503,7 @@ export type SkillCreateManyInput = {
 export type SkillUpdateManyMutationInput = {
   id?: Prisma.BigIntFieldUpdateOperationsInput | bigint | number
   name?: Prisma.StringFieldUpdateOperationsInput | string
+  type?: Prisma.StringFieldUpdateOperationsInput | string
   desc?: Prisma.StringFieldUpdateOperationsInput | string
   job?: Prisma.StringFieldUpdateOperationsInput | string
   rarity?: Prisma.IntFieldUpdateOperationsInput | number
@@ -504,6 +522,7 @@ export type SkillUpdateManyMutationInput = {
 export type SkillUncheckedUpdateManyInput = {
   id?: Prisma.BigIntFieldUpdateOperationsInput | bigint | number
   name?: Prisma.StringFieldUpdateOperationsInput | string
+  type?: Prisma.StringFieldUpdateOperationsInput | string
   desc?: Prisma.StringFieldUpdateOperationsInput | string
   job?: Prisma.StringFieldUpdateOperationsInput | string
   rarity?: Prisma.IntFieldUpdateOperationsInput | number
@@ -533,6 +552,7 @@ export type SkillOrderByRelevanceInput = {
 export type SkillCountOrderByAggregateInput = {
   id?: Prisma.SortOrder
   name?: Prisma.SortOrder
+  type?: Prisma.SortOrder
   desc?: Prisma.SortOrder
   job?: Prisma.SortOrder
   rarity?: Prisma.SortOrder
@@ -558,6 +578,7 @@ export type SkillAvgOrderByAggregateInput = {
 export type SkillMaxOrderByAggregateInput = {
   id?: Prisma.SortOrder
   name?: Prisma.SortOrder
+  type?: Prisma.SortOrder
   desc?: Prisma.SortOrder
   job?: Prisma.SortOrder
   rarity?: Prisma.SortOrder
@@ -574,6 +595,7 @@ export type SkillMaxOrderByAggregateInput = {
 export type SkillMinOrderByAggregateInput = {
   id?: Prisma.SortOrder
   name?: Prisma.SortOrder
+  type?: Prisma.SortOrder
   desc?: Prisma.SortOrder
   job?: Prisma.SortOrder
   rarity?: Prisma.SortOrder
@@ -615,6 +637,7 @@ export type NullableStringFieldUpdateOperationsInput = {
 export type SkillCreateWithoutPlayerSkillsInput = {
   id?: bigint | number
   name: string
+  type: string
   desc: string
   job: string
   rarity: number
@@ -633,6 +656,7 @@ export type SkillCreateWithoutPlayerSkillsInput = {
 export type SkillUncheckedCreateWithoutPlayerSkillsInput = {
   id?: bigint | number
   name: string
+  type: string
   desc: string
   job: string
   rarity: number
@@ -667,6 +691,7 @@ export type SkillUpdateToOneWithWhereWithoutPlayerSkillsInput = {
 export type SkillUpdateWithoutPlayerSkillsInput = {
   id?: Prisma.BigIntFieldUpdateOperationsInput | bigint | number
   name?: Prisma.StringFieldUpdateOperationsInput | string
+  type?: Prisma.StringFieldUpdateOperationsInput | string
   desc?: Prisma.StringFieldUpdateOperationsInput | string
   job?: Prisma.StringFieldUpdateOperationsInput | string
   rarity?: Prisma.IntFieldUpdateOperationsInput | number
@@ -685,6 +710,7 @@ export type SkillUpdateWithoutPlayerSkillsInput = {
 export type SkillUncheckedUpdateWithoutPlayerSkillsInput = {
   id?: Prisma.BigIntFieldUpdateOperationsInput | bigint | number
   name?: Prisma.StringFieldUpdateOperationsInput | string
+  type?: Prisma.StringFieldUpdateOperationsInput | string
   desc?: Prisma.StringFieldUpdateOperationsInput | string
   job?: Prisma.StringFieldUpdateOperationsInput | string
   rarity?: Prisma.IntFieldUpdateOperationsInput | number
@@ -734,6 +760,7 @@ export type SkillCountOutputTypeCountPlayerSkillsArgs<ExtArgs extends runtime.Ty
 export type SkillSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
   id?: boolean
   name?: boolean
+  type?: boolean
   desc?: boolean
   job?: boolean
   rarity?: boolean
@@ -756,6 +783,7 @@ export type SkillSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = 
 export type SkillSelectScalar = {
   id?: boolean
   name?: boolean
+  type?: boolean
   desc?: boolean
   job?: boolean
   rarity?: boolean
@@ -771,7 +799,7 @@ export type SkillSelectScalar = {
   deletedAt?: boolean
 }
 
-export type SkillOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "name" | "desc" | "job" | "rarity" | "range" | "cooldown" | "costMp" | "icon" | "sort" | "effects" | "effectsDesc" | "createdAt" | "updatedAt" | "deletedAt", ExtArgs["result"]["skill"]>
+export type SkillOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "name" | "type" | "desc" | "job" | "rarity" | "range" | "cooldown" | "costMp" | "icon" | "sort" | "effects" | "effectsDesc" | "createdAt" | "updatedAt" | "deletedAt", ExtArgs["result"]["skill"]>
 export type SkillInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   playerSkills?: boolean | Prisma.Skill$playerSkillsArgs<ExtArgs>
   _count?: boolean | Prisma.SkillCountOutputTypeDefaultArgs<ExtArgs>
@@ -785,6 +813,7 @@ export type $SkillPayload<ExtArgs extends runtime.Types.Extensions.InternalArgs 
   scalars: runtime.Types.Extensions.GetPayloadResult<{
     id: bigint
     name: string
+    type: string
     desc: string
     job: string
     rarity: number
@@ -1170,6 +1199,7 @@ export interface Prisma__SkillClient<T, Null = never, ExtArgs extends runtime.Ty
 export interface SkillFieldRefs {
   readonly id: Prisma.FieldRef<"Skill", 'BigInt'>
   readonly name: Prisma.FieldRef<"Skill", 'String'>
+  readonly type: Prisma.FieldRef<"Skill", 'String'>
   readonly desc: Prisma.FieldRef<"Skill", 'String'>
   readonly job: Prisma.FieldRef<"Skill", 'String'>
   readonly rarity: Prisma.FieldRef<"Skill", 'Int'>

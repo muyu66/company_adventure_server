@@ -14,3 +14,12 @@ export const JobSchema = z.enum([
 ]);
 
 export type Job = z.infer<typeof JobSchema>;
+
+export const SkillTypeSchema = z.enum([
+  // 主动
+  'active',
+  // 被动
+  'passive',
+]);
+
+export type SkillType = z.infer<typeof SkillTypeSchema>;

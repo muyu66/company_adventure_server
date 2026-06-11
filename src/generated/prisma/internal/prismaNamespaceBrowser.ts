@@ -174,6 +174,7 @@ export type PlayerSkillScalarFieldEnum = (typeof PlayerSkillScalarFieldEnum)[key
 export const SkillScalarFieldEnum = {
   id: 'id',
   name: 'name',
+  type: 'type',
   desc: 'desc',
   job: 'job',
   rarity: 'rarity',
@@ -265,6 +266,7 @@ export type SubMapOrderByRelevanceFieldEnum = (typeof SubMapOrderByRelevanceFiel
 
 export const SkillOrderByRelevanceFieldEnum = {
   name: 'name',
+  type: 'type',
   desc: 'desc',
   job: 'job',
   cooldown: 'cooldown',

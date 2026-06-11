@@ -2,10 +2,14 @@ import { Injectable } from '@nestjs/common';
 import { PrismaService } from 'src/prisma.service';
 import { findFirstMissing } from 'src/tool';
 import { SkillInfoRes, SkillInfoSchema } from './schema/skill.schema';
+import { PlayerService } from './player.service';
 
 @Injectable()
 export class SkillService {
-  constructor(private readonly prisma: PrismaService) {}
+  constructor(
+    private readonly prisma: PrismaService,
+    private readonly playerService: PlayerService,
+  ) {}
 
   /**
    * 获取我的技能列表
@@ -13,30 +17,28 @@ export class SkillService {
    * @returns
    */
   async getMySkills(playerId: bigint): Promise<SkillInfoRes[]> {
+    const player = await this.playerService.getPlayer(playerId);
     const playerSkills = await this.prisma.playerSkill.findMany({
       where: { playerId },
     });
-    const playerSkillIds = playerSkills.map(
-      (playerSkill) => playerSkill.skillId,
-    );
     const skills = await this.prisma.skill.findMany({
       where: {
-        id: {
-          in: playerSkillIds,
-        },
+        job: player.job,
       },
     });
 
     const res: SkillInfoRes[] = [];
-    for (const playerSkill of playerSkills) {
-      const skill = skills.find((skill) => skill.id === playerSkill.skillId);
-      if (skill == null) continue;
+    for (const skill of skills) {
+      const playerSkill = playerSkills.find(
+        (playerSkill) => playerSkill.skillId === skill.id,
+      );
 
       res.push(
         SkillInfoSchema.parse({
           ...skill,
-          level: playerSkill.level,
-          installed: playerSkill.slot != null,
+          slot: playerSkill == null ? null : playerSkill.slot,
+          level: playerSkill == null ? 0 : playerSkill.level,
+          installed: playerSkill == null ? false : playerSkill.slot != null,
         }),
       );
     }
