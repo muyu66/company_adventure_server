@@ -18,6 +18,7 @@ import { Player } from '../generated/prisma/client';
 import { UnitType } from './player.const';
 import { PlayerInfoRes, PlayerInfoSchema } from './schema/player.schema';
 import { SubMapRes, SubMapSchema } from 'src/map/schema/map.schema';
+import { SkillEffectsSchema } from './schema/skill.schema';
 
 @Injectable()
 export class PlayerService {
@@ -86,9 +87,56 @@ export class PlayerService {
     return true;
   }
 
-  getPlayersInfo(player: Player[]): PlayerInfoRes[] {
-    return player.map((player) => {
-      return PlayerInfoSchema.parse({
+  /**
+   * 装载被动技能, 会对 player 属性做出修改
+   * @param players
+   * @returns
+   */
+  async loadPassiveSkills(players: Player[]): Promise<Player[]> {
+    if (players.length === 0) return players;
+
+    // 批量查询所有玩家的被动技能（一次 DB 查询替代 N 次）
+    const playerIds = players.map((p) => p.id);
+    const passiveSkills = await this.prisma.playerSkill.findMany({
+      where: {
+        playerId: { in: playerIds },
+        skillType: 'passive',
+      },
+      include: {
+        skill: true,
+      },
+    });
+
+    for (const player of players) {
+      const playerPassiveSkills = passiveSkills.filter(
+        (skill) => skill.playerId === player.id,
+      );
+      playerPassiveSkills.forEach((skill) => {
+        const passiveSkill = skill.skill;
+        if (passiveSkill) {
+          const effects = SkillEffectsSchema.parse(passiveSkill.effects);
+          const expr = effects[0].expr[skill.level - 1];
+          const targetKey = effects[0].targetKey;
+          const targetValue = parseInt(expr);
+          switch (targetKey) {
+            case 'physical':
+              player.attrPhysical += targetValue;
+              break;
+          }
+        }
+      });
+    }
+    return players;
+  }
+
+  async getPlayersInfo(players: Player[]): Promise<PlayerInfoRes[]> {
+    const res: PlayerInfoRes[] = [];
+
+    // 装载被动技能, 会对 player 属性做出修改
+    players = await this.loadPassiveSkills(players);
+
+    for (const player of players) {
+      const playerInfo = PlayerInfoSchema.parse({
         ...player,
         id: 'p1',
         team: 1,
@@ -107,6 +155,8 @@ export class PlayerService {
         speed: getSpeed(player),
         atkRange: getAttackRange(player),
       });
-    });
+      res.push(playerInfo);
+    }
+    return res;
   }
 }

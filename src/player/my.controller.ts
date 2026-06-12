@@ -24,7 +24,8 @@ export class PlayerMyController {
   @Get()
   async getMy(): Promise<PlayerInfoRes> {
     const player = await this.playerService.getPlayer(1n);
-    return this.playerService.getPlayersInfo([player])[0];
+    const players = await this.playerService.getPlayersInfo([player]);
+    return players[0];
   }
 
   @Get('sub_map')

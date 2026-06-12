@@ -930,6 +930,7 @@ export const PlayerSkillScalarFieldEnum = {
   id: 'id',
   playerId: 'playerId',
   skillId: 'skillId',
+  skillType: 'skillType',
   level: 'level',
   slot: 'slot',
   createdAt: 'createdAt',
@@ -1031,6 +1032,13 @@ export const SubMapOrderByRelevanceFieldEnum = {
 } as const
 
 export type SubMapOrderByRelevanceFieldEnum = (typeof SubMapOrderByRelevanceFieldEnum)[keyof typeof SubMapOrderByRelevanceFieldEnum]
+
+
+export const PlayerSkillOrderByRelevanceFieldEnum = {
+  skillType: 'skillType'
+} as const
+
+export type PlayerSkillOrderByRelevanceFieldEnum = (typeof PlayerSkillOrderByRelevanceFieldEnum)[keyof typeof PlayerSkillOrderByRelevanceFieldEnum]
 
 
 export const SkillOrderByRelevanceFieldEnum = {

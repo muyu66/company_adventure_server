@@ -46,6 +46,7 @@ export type PlayerSkillMinAggregateOutputType = {
   id: bigint | null
   playerId: bigint | null
   skillId: bigint | null
+  skillType: string | null
   level: number | null
   slot: number | null
   createdAt: Date | null
@@ -57,6 +58,7 @@ export type PlayerSkillMaxAggregateOutputType = {
   id: bigint | null
   playerId: bigint | null
   skillId: bigint | null
+  skillType: string | null
   level: number | null
   slot: number | null
   createdAt: Date | null
@@ -68,6 +70,7 @@ export type PlayerSkillCountAggregateOutputType = {
   id: number
   playerId: number
   skillId: number
+  skillType: number
   level: number
   slot: number
   createdAt: number
@@ -97,6 +100,7 @@ export type PlayerSkillMinAggregateInputType = {
   id?: true
   playerId?: true
   skillId?: true
+  skillType?: true
   level?: true
   slot?: true
   createdAt?: true
@@ -108,6 +112,7 @@ export type PlayerSkillMaxAggregateInputType = {
   id?: true
   playerId?: true
   skillId?: true
+  skillType?: true
   level?: true
   slot?: true
   createdAt?: true
@@ -119,6 +124,7 @@ export type PlayerSkillCountAggregateInputType = {
   id?: true
   playerId?: true
   skillId?: true
+  skillType?: true
   level?: true
   slot?: true
   createdAt?: true
@@ -217,6 +223,7 @@ export type PlayerSkillGroupByOutputType = {
   id: bigint
   playerId: bigint
   skillId: bigint
+  skillType: string
   level: number
   slot: number | null
   createdAt: Date
@@ -251,6 +258,7 @@ export type PlayerSkillWhereInput = {
   id?: Prisma.BigIntFilter<"PlayerSkill"> | bigint | number
   playerId?: Prisma.BigIntFilter<"PlayerSkill"> | bigint | number
   skillId?: Prisma.BigIntFilter<"PlayerSkill"> | bigint | number
+  skillType?: Prisma.StringFilter<"PlayerSkill"> | string
   level?: Prisma.IntFilter<"PlayerSkill"> | number
   slot?: Prisma.IntNullableFilter<"PlayerSkill"> | number | null
   createdAt?: Prisma.DateTimeFilter<"PlayerSkill"> | Date | string
@@ -263,12 +271,14 @@ export type PlayerSkillOrderByWithRelationInput = {
   id?: Prisma.SortOrder
   playerId?: Prisma.SortOrder
   skillId?: Prisma.SortOrder
+  skillType?: Prisma.SortOrder
   level?: Prisma.SortOrder
   slot?: Prisma.SortOrderInput | Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
   deletedAt?: Prisma.SortOrderInput | Prisma.SortOrder
   skill?: Prisma.SkillOrderByWithRelationInput
+  _relevance?: Prisma.PlayerSkillOrderByRelevanceInput
 }
 
 export type PlayerSkillWhereUniqueInput = Prisma.AtLeast<{
@@ -280,6 +290,7 @@ export type PlayerSkillWhereUniqueInput = Prisma.AtLeast<{
   NOT?: Prisma.PlayerSkillWhereInput | Prisma.PlayerSkillWhereInput[]
   playerId?: Prisma.BigIntFilter<"PlayerSkill"> | bigint | number
   skillId?: Prisma.BigIntFilter<"PlayerSkill"> | bigint | number
+  skillType?: Prisma.StringFilter<"PlayerSkill"> | string
   level?: Prisma.IntFilter<"PlayerSkill"> | number
   slot?: Prisma.IntNullableFilter<"PlayerSkill"> | number | null
   createdAt?: Prisma.DateTimeFilter<"PlayerSkill"> | Date | string
@@ -292,6 +303,7 @@ export type PlayerSkillOrderByWithAggregationInput = {
   id?: Prisma.SortOrder
   playerId?: Prisma.SortOrder
   skillId?: Prisma.SortOrder
+  skillType?: Prisma.SortOrder
   level?: Prisma.SortOrder
   slot?: Prisma.SortOrderInput | Prisma.SortOrder
   createdAt?: Prisma.SortOrder
@@ -311,6 +323,7 @@ export type PlayerSkillScalarWhereWithAggregatesInput = {
   id?: Prisma.BigIntWithAggregatesFilter<"PlayerSkill"> | bigint | number
   playerId?: Prisma.BigIntWithAggregatesFilter<"PlayerSkill"> | bigint | number
   skillId?: Prisma.BigIntWithAggregatesFilter<"PlayerSkill"> | bigint | number
+  skillType?: Prisma.StringWithAggregatesFilter<"PlayerSkill"> | string
   level?: Prisma.IntWithAggregatesFilter<"PlayerSkill"> | number
   slot?: Prisma.IntNullableWithAggregatesFilter<"PlayerSkill"> | number | null
   createdAt?: Prisma.DateTimeWithAggregatesFilter<"PlayerSkill"> | Date | string
@@ -321,6 +334,7 @@ export type PlayerSkillScalarWhereWithAggregatesInput = {
 export type PlayerSkillCreateInput = {
   id?: bigint | number
   playerId: bigint | number
+  skillType: string
   level?: number
   slot?: number | null
   createdAt?: Date | string
@@ -333,6 +347,7 @@ export type PlayerSkillUncheckedCreateInput = {
   id?: bigint | number
   playerId: bigint | number
   skillId: bigint | number
+  skillType: string
   level?: number
   slot?: number | null
   createdAt?: Date | string
@@ -343,6 +358,7 @@ export type PlayerSkillUncheckedCreateInput = {
 export type PlayerSkillUpdateInput = {
   id?: Prisma.BigIntFieldUpdateOperationsInput | bigint | number
   playerId?: Prisma.BigIntFieldUpdateOperationsInput | bigint | number
+  skillType?: Prisma.StringFieldUpdateOperationsInput | string
   level?: Prisma.IntFieldUpdateOperationsInput | number
   slot?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -355,6 +371,7 @@ export type PlayerSkillUncheckedUpdateInput = {
   id?: Prisma.BigIntFieldUpdateOperationsInput | bigint | number
   playerId?: Prisma.BigIntFieldUpdateOperationsInput | bigint | number
   skillId?: Prisma.BigIntFieldUpdateOperationsInput | bigint | number
+  skillType?: Prisma.StringFieldUpdateOperationsInput | string
   level?: Prisma.IntFieldUpdateOperationsInput | number
   slot?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -366,6 +383,7 @@ export type PlayerSkillCreateManyInput = {
   id?: bigint | number
   playerId: bigint | number
   skillId: bigint | number
+  skillType: string
   level?: number
   slot?: number | null
   createdAt?: Date | string
@@ -376,6 +394,7 @@ export type PlayerSkillCreateManyInput = {
 export type PlayerSkillUpdateManyMutationInput = {
   id?: Prisma.BigIntFieldUpdateOperationsInput | bigint | number
   playerId?: Prisma.BigIntFieldUpdateOperationsInput | bigint | number
+  skillType?: Prisma.StringFieldUpdateOperationsInput | string
   level?: Prisma.IntFieldUpdateOperationsInput | number
   slot?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -387,11 +406,18 @@ export type PlayerSkillUncheckedUpdateManyInput = {
   id?: Prisma.BigIntFieldUpdateOperationsInput | bigint | number
   playerId?: Prisma.BigIntFieldUpdateOperationsInput | bigint | number
   skillId?: Prisma.BigIntFieldUpdateOperationsInput | bigint | number
+  skillType?: Prisma.StringFieldUpdateOperationsInput | string
   level?: Prisma.IntFieldUpdateOperationsInput | number
   slot?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   deletedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+}
+
+export type PlayerSkillOrderByRelevanceInput = {
+  fields: Prisma.PlayerSkillOrderByRelevanceFieldEnum | Prisma.PlayerSkillOrderByRelevanceFieldEnum[]
+  sort: Prisma.SortOrder
+  search: string
 }
 
 export type PlayerSkillPlayerIdSkillIdCompoundUniqueInput = {
@@ -408,6 +434,7 @@ export type PlayerSkillCountOrderByAggregateInput = {
   id?: Prisma.SortOrder
   playerId?: Prisma.SortOrder
   skillId?: Prisma.SortOrder
+  skillType?: Prisma.SortOrder
   level?: Prisma.SortOrder
   slot?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
@@ -427,6 +454,7 @@ export type PlayerSkillMaxOrderByAggregateInput = {
   id?: Prisma.SortOrder
   playerId?: Prisma.SortOrder
   skillId?: Prisma.SortOrder
+  skillType?: Prisma.SortOrder
   level?: Prisma.SortOrder
   slot?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
@@ -438,6 +466,7 @@ export type PlayerSkillMinOrderByAggregateInput = {
   id?: Prisma.SortOrder
   playerId?: Prisma.SortOrder
   skillId?: Prisma.SortOrder
+  skillType?: Prisma.SortOrder
   level?: Prisma.SortOrder
   slot?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
@@ -516,6 +545,7 @@ export type PlayerSkillUncheckedUpdateManyWithoutSkillNestedInput = {
 export type PlayerSkillCreateWithoutSkillInput = {
   id?: bigint | number
   playerId: bigint | number
+  skillType: string
   level?: number
   slot?: number | null
   createdAt?: Date | string
@@ -526,6 +556,7 @@ export type PlayerSkillCreateWithoutSkillInput = {
 export type PlayerSkillUncheckedCreateWithoutSkillInput = {
   id?: bigint | number
   playerId: bigint | number
+  skillType: string
   level?: number
   slot?: number | null
   createdAt?: Date | string
@@ -566,6 +597,7 @@ export type PlayerSkillScalarWhereInput = {
   id?: Prisma.BigIntFilter<"PlayerSkill"> | bigint | number
   playerId?: Prisma.BigIntFilter<"PlayerSkill"> | bigint | number
   skillId?: Prisma.BigIntFilter<"PlayerSkill"> | bigint | number
+  skillType?: Prisma.StringFilter<"PlayerSkill"> | string
   level?: Prisma.IntFilter<"PlayerSkill"> | number
   slot?: Prisma.IntNullableFilter<"PlayerSkill"> | number | null
   createdAt?: Prisma.DateTimeFilter<"PlayerSkill"> | Date | string
@@ -576,6 +608,7 @@ export type PlayerSkillScalarWhereInput = {
 export type PlayerSkillCreateManySkillInput = {
   id?: bigint | number
   playerId: bigint | number
+  skillType: string
   level?: number
   slot?: number | null
   createdAt?: Date | string
@@ -586,6 +619,7 @@ export type PlayerSkillCreateManySkillInput = {
 export type PlayerSkillUpdateWithoutSkillInput = {
   id?: Prisma.BigIntFieldUpdateOperationsInput | bigint | number
   playerId?: Prisma.BigIntFieldUpdateOperationsInput | bigint | number
+  skillType?: Prisma.StringFieldUpdateOperationsInput | string
   level?: Prisma.IntFieldUpdateOperationsInput | number
   slot?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -596,6 +630,7 @@ export type PlayerSkillUpdateWithoutSkillInput = {
 export type PlayerSkillUncheckedUpdateWithoutSkillInput = {
   id?: Prisma.BigIntFieldUpdateOperationsInput | bigint | number
   playerId?: Prisma.BigIntFieldUpdateOperationsInput | bigint | number
+  skillType?: Prisma.StringFieldUpdateOperationsInput | string
   level?: Prisma.IntFieldUpdateOperationsInput | number
   slot?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -606,6 +641,7 @@ export type PlayerSkillUncheckedUpdateWithoutSkillInput = {
 export type PlayerSkillUncheckedUpdateManyWithoutSkillInput = {
   id?: Prisma.BigIntFieldUpdateOperationsInput | bigint | number
   playerId?: Prisma.BigIntFieldUpdateOperationsInput | bigint | number
+  skillType?: Prisma.StringFieldUpdateOperationsInput | string
   level?: Prisma.IntFieldUpdateOperationsInput | number
   slot?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -619,6 +655,7 @@ export type PlayerSkillSelect<ExtArgs extends runtime.Types.Extensions.InternalA
   id?: boolean
   playerId?: boolean
   skillId?: boolean
+  skillType?: boolean
   level?: boolean
   slot?: boolean
   createdAt?: boolean
@@ -633,6 +670,7 @@ export type PlayerSkillSelectScalar = {
   id?: boolean
   playerId?: boolean
   skillId?: boolean
+  skillType?: boolean
   level?: boolean
   slot?: boolean
   createdAt?: boolean
@@ -640,7 +678,7 @@ export type PlayerSkillSelectScalar = {
   deletedAt?: boolean
 }
 
-export type PlayerSkillOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "playerId" | "skillId" | "level" | "slot" | "createdAt" | "updatedAt" | "deletedAt", ExtArgs["result"]["playerSkill"]>
+export type PlayerSkillOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "playerId" | "skillId" | "skillType" | "level" | "slot" | "createdAt" | "updatedAt" | "deletedAt", ExtArgs["result"]["playerSkill"]>
 export type PlayerSkillInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   skill?: boolean | Prisma.SkillDefaultArgs<ExtArgs>
 }
@@ -654,6 +692,7 @@ export type $PlayerSkillPayload<ExtArgs extends runtime.Types.Extensions.Interna
     id: bigint
     playerId: bigint
     skillId: bigint
+    skillType: string
     level: number
     slot: number | null
     createdAt: Date
@@ -1032,6 +1071,7 @@ export interface PlayerSkillFieldRefs {
   readonly id: Prisma.FieldRef<"PlayerSkill", 'BigInt'>
   readonly playerId: Prisma.FieldRef<"PlayerSkill", 'BigInt'>
   readonly skillId: Prisma.FieldRef<"PlayerSkill", 'BigInt'>
+  readonly skillType: Prisma.FieldRef<"PlayerSkill", 'String'>
   readonly level: Prisma.FieldRef<"PlayerSkill", 'Int'>
   readonly slot: Prisma.FieldRef<"PlayerSkill", 'Int'>
   readonly createdAt: Prisma.FieldRef<"PlayerSkill", 'DateTime'>

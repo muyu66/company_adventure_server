@@ -135,11 +135,12 @@ model SubMap {
 model PlayerSkill {
   id BigInt @id @default(autoincrement()) @db.UnsignedBigInt
 
-  playerId BigInt @map("player_id") @db.UnsignedBigInt
-  skillId  BigInt @map("skill_id") @db.UnsignedBigInt
-  level    Int    @default(1) @db.UnsignedTinyInt
-  slot     Int?   @db.UnsignedTinyInt
-  skill    Skill  @relation(fields: [skillId], references: [id])
+  playerId  BigInt @map("player_id") @db.UnsignedBigInt
+  skillId   BigInt @map("skill_id") @db.UnsignedBigInt
+  skillType String @map("skill_type") @db.VarChar(20)
+  level     Int    @default(1) @db.UnsignedTinyInt
+  slot      Int?   @db.UnsignedTinyInt
+  skill     Skill  @relation(fields: [skillId], references: [id])
 
   createdAt DateTime  @default(now()) @map("created_at") @db.DateTime(0)
   updatedAt DateTime  @updatedAt @map("updated_at") @db.DateTime(0)
