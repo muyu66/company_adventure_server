@@ -31,6 +31,7 @@ const SkillEffectSchema = z.object({
   expr: z.array(z.string()),
   duration: z.array(z.number()).optional(),
   summonInherit: z.array(z.number()).optional(),
+  summonUnitSpriteFrames: z.string().optional(),
 });
 
 export const SkillEffectsSchema = z.array(SkillEffectSchema);
@@ -45,6 +46,7 @@ export const SkillEffectResSchema = z.object({
   expr: z.string(),
   duration: z.float32(),
   summonInherit: z.float32(),
+  summonUnitSpriteFrames: z.string().optional(),
 });
 export type SkillEffectRes = z.infer<typeof SkillEffectResSchema>;
 
@@ -53,6 +55,7 @@ export const SkillDataSchema = z.object({
   name: z.string(),
   type: SkillTypeSchema,
   skillRange: z.int(),
+  skillRadius: z.int(),
   cooldown: z.float32(),
   costMp: z.int(),
   icon: z.string(),

@@ -98,6 +98,8 @@ export class SkillService {
           ),
 
           skillRange: playerSkill.skill.range,
+          skillRadius: playerSkill.skill.radius,
+
           cooldown: Number(
             playerSkill.skill.cooldown.split(',')[playerSkill.level - 1],
           ),

@@ -180,6 +180,7 @@ export const SkillScalarFieldEnum = {
   job: 'job',
   rarity: 'rarity',
   range: 'range',
+  radius: 'radius',
   cooldown: 'cooldown',
   costMp: 'costMp',
   icon: 'icon',

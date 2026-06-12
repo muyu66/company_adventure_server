@@ -30,6 +30,7 @@ export type SkillAvgAggregateOutputType = {
   id: number | null
   rarity: number | null
   range: number | null
+  radius: number | null
   sort: number | null
 }
 
@@ -37,6 +38,7 @@ export type SkillSumAggregateOutputType = {
   id: bigint | null
   rarity: number | null
   range: number | null
+  radius: number | null
   sort: number | null
 }
 
@@ -48,6 +50,7 @@ export type SkillMinAggregateOutputType = {
   job: string | null
   rarity: number | null
   range: number | null
+  radius: number | null
   cooldown: string | null
   costMp: string | null
   icon: string | null
@@ -65,6 +68,7 @@ export type SkillMaxAggregateOutputType = {
   job: string | null
   rarity: number | null
   range: number | null
+  radius: number | null
   cooldown: string | null
   costMp: string | null
   icon: string | null
@@ -82,6 +86,7 @@ export type SkillCountAggregateOutputType = {
   job: number
   rarity: number
   range: number
+  radius: number
   cooldown: number
   costMp: number
   icon: number
@@ -99,6 +104,7 @@ export type SkillAvgAggregateInputType = {
   id?: true
   rarity?: true
   range?: true
+  radius?: true
   sort?: true
 }
 
@@ -106,6 +112,7 @@ export type SkillSumAggregateInputType = {
   id?: true
   rarity?: true
   range?: true
+  radius?: true
   sort?: true
 }
 
@@ -117,6 +124,7 @@ export type SkillMinAggregateInputType = {
   job?: true
   rarity?: true
   range?: true
+  radius?: true
   cooldown?: true
   costMp?: true
   icon?: true
@@ -134,6 +142,7 @@ export type SkillMaxAggregateInputType = {
   job?: true
   rarity?: true
   range?: true
+  radius?: true
   cooldown?: true
   costMp?: true
   icon?: true
@@ -151,6 +160,7 @@ export type SkillCountAggregateInputType = {
   job?: true
   rarity?: true
   range?: true
+  radius?: true
   cooldown?: true
   costMp?: true
   icon?: true
@@ -257,6 +267,7 @@ export type SkillGroupByOutputType = {
   job: string
   rarity: number
   range: number
+  radius: number
   cooldown: string
   costMp: string
   icon: string
@@ -299,6 +310,7 @@ export type SkillWhereInput = {
   job?: Prisma.StringFilter<"Skill"> | string
   rarity?: Prisma.IntFilter<"Skill"> | number
   range?: Prisma.IntFilter<"Skill"> | number
+  radius?: Prisma.IntFilter<"Skill"> | number
   cooldown?: Prisma.StringFilter<"Skill"> | string
   costMp?: Prisma.StringFilter<"Skill"> | string
   icon?: Prisma.StringFilter<"Skill"> | string
@@ -319,6 +331,7 @@ export type SkillOrderByWithRelationInput = {
   job?: Prisma.SortOrder
   rarity?: Prisma.SortOrder
   range?: Prisma.SortOrder
+  radius?: Prisma.SortOrder
   cooldown?: Prisma.SortOrder
   costMp?: Prisma.SortOrder
   icon?: Prisma.SortOrder
@@ -343,6 +356,7 @@ export type SkillWhereUniqueInput = Prisma.AtLeast<{
   job?: Prisma.StringFilter<"Skill"> | string
   rarity?: Prisma.IntFilter<"Skill"> | number
   range?: Prisma.IntFilter<"Skill"> | number
+  radius?: Prisma.IntFilter<"Skill"> | number
   cooldown?: Prisma.StringFilter<"Skill"> | string
   costMp?: Prisma.StringFilter<"Skill"> | string
   icon?: Prisma.StringFilter<"Skill"> | string
@@ -363,6 +377,7 @@ export type SkillOrderByWithAggregationInput = {
   job?: Prisma.SortOrder
   rarity?: Prisma.SortOrder
   range?: Prisma.SortOrder
+  radius?: Prisma.SortOrder
   cooldown?: Prisma.SortOrder
   costMp?: Prisma.SortOrder
   icon?: Prisma.SortOrder
@@ -390,6 +405,7 @@ export type SkillScalarWhereWithAggregatesInput = {
   job?: Prisma.StringWithAggregatesFilter<"Skill"> | string
   rarity?: Prisma.IntWithAggregatesFilter<"Skill"> | number
   range?: Prisma.IntWithAggregatesFilter<"Skill"> | number
+  radius?: Prisma.IntWithAggregatesFilter<"Skill"> | number
   cooldown?: Prisma.StringWithAggregatesFilter<"Skill"> | string
   costMp?: Prisma.StringWithAggregatesFilter<"Skill"> | string
   icon?: Prisma.StringWithAggregatesFilter<"Skill"> | string
@@ -409,6 +425,7 @@ export type SkillCreateInput = {
   job: string
   rarity: number
   range: number
+  radius: number
   cooldown: string
   costMp: string
   icon: string
@@ -429,6 +446,7 @@ export type SkillUncheckedCreateInput = {
   job: string
   rarity: number
   range: number
+  radius: number
   cooldown: string
   costMp: string
   icon: string
@@ -449,6 +467,7 @@ export type SkillUpdateInput = {
   job?: Prisma.StringFieldUpdateOperationsInput | string
   rarity?: Prisma.IntFieldUpdateOperationsInput | number
   range?: Prisma.IntFieldUpdateOperationsInput | number
+  radius?: Prisma.IntFieldUpdateOperationsInput | number
   cooldown?: Prisma.StringFieldUpdateOperationsInput | string
   costMp?: Prisma.StringFieldUpdateOperationsInput | string
   icon?: Prisma.StringFieldUpdateOperationsInput | string
@@ -469,6 +488,7 @@ export type SkillUncheckedUpdateInput = {
   job?: Prisma.StringFieldUpdateOperationsInput | string
   rarity?: Prisma.IntFieldUpdateOperationsInput | number
   range?: Prisma.IntFieldUpdateOperationsInput | number
+  radius?: Prisma.IntFieldUpdateOperationsInput | number
   cooldown?: Prisma.StringFieldUpdateOperationsInput | string
   costMp?: Prisma.StringFieldUpdateOperationsInput | string
   icon?: Prisma.StringFieldUpdateOperationsInput | string
@@ -489,6 +509,7 @@ export type SkillCreateManyInput = {
   job: string
   rarity: number
   range: number
+  radius: number
   cooldown: string
   costMp: string
   icon: string
@@ -508,6 +529,7 @@ export type SkillUpdateManyMutationInput = {
   job?: Prisma.StringFieldUpdateOperationsInput | string
   rarity?: Prisma.IntFieldUpdateOperationsInput | number
   range?: Prisma.IntFieldUpdateOperationsInput | number
+  radius?: Prisma.IntFieldUpdateOperationsInput | number
   cooldown?: Prisma.StringFieldUpdateOperationsInput | string
   costMp?: Prisma.StringFieldUpdateOperationsInput | string
   icon?: Prisma.StringFieldUpdateOperationsInput | string
@@ -527,6 +549,7 @@ export type SkillUncheckedUpdateManyInput = {
   job?: Prisma.StringFieldUpdateOperationsInput | string
   rarity?: Prisma.IntFieldUpdateOperationsInput | number
   range?: Prisma.IntFieldUpdateOperationsInput | number
+  radius?: Prisma.IntFieldUpdateOperationsInput | number
   cooldown?: Prisma.StringFieldUpdateOperationsInput | string
   costMp?: Prisma.StringFieldUpdateOperationsInput | string
   icon?: Prisma.StringFieldUpdateOperationsInput | string
@@ -557,6 +580,7 @@ export type SkillCountOrderByAggregateInput = {
   job?: Prisma.SortOrder
   rarity?: Prisma.SortOrder
   range?: Prisma.SortOrder
+  radius?: Prisma.SortOrder
   cooldown?: Prisma.SortOrder
   costMp?: Prisma.SortOrder
   icon?: Prisma.SortOrder
@@ -572,6 +596,7 @@ export type SkillAvgOrderByAggregateInput = {
   id?: Prisma.SortOrder
   rarity?: Prisma.SortOrder
   range?: Prisma.SortOrder
+  radius?: Prisma.SortOrder
   sort?: Prisma.SortOrder
 }
 
@@ -583,6 +608,7 @@ export type SkillMaxOrderByAggregateInput = {
   job?: Prisma.SortOrder
   rarity?: Prisma.SortOrder
   range?: Prisma.SortOrder
+  radius?: Prisma.SortOrder
   cooldown?: Prisma.SortOrder
   costMp?: Prisma.SortOrder
   icon?: Prisma.SortOrder
@@ -600,6 +626,7 @@ export type SkillMinOrderByAggregateInput = {
   job?: Prisma.SortOrder
   rarity?: Prisma.SortOrder
   range?: Prisma.SortOrder
+  radius?: Prisma.SortOrder
   cooldown?: Prisma.SortOrder
   costMp?: Prisma.SortOrder
   icon?: Prisma.SortOrder
@@ -613,6 +640,7 @@ export type SkillSumOrderByAggregateInput = {
   id?: Prisma.SortOrder
   rarity?: Prisma.SortOrder
   range?: Prisma.SortOrder
+  radius?: Prisma.SortOrder
   sort?: Prisma.SortOrder
 }
 
@@ -638,6 +666,7 @@ export type SkillCreateWithoutPlayerSkillsInput = {
   job: string
   rarity: number
   range: number
+  radius: number
   cooldown: string
   costMp: string
   icon: string
@@ -657,6 +686,7 @@ export type SkillUncheckedCreateWithoutPlayerSkillsInput = {
   job: string
   rarity: number
   range: number
+  radius: number
   cooldown: string
   costMp: string
   icon: string
@@ -692,6 +722,7 @@ export type SkillUpdateWithoutPlayerSkillsInput = {
   job?: Prisma.StringFieldUpdateOperationsInput | string
   rarity?: Prisma.IntFieldUpdateOperationsInput | number
   range?: Prisma.IntFieldUpdateOperationsInput | number
+  radius?: Prisma.IntFieldUpdateOperationsInput | number
   cooldown?: Prisma.StringFieldUpdateOperationsInput | string
   costMp?: Prisma.StringFieldUpdateOperationsInput | string
   icon?: Prisma.StringFieldUpdateOperationsInput | string
@@ -711,6 +742,7 @@ export type SkillUncheckedUpdateWithoutPlayerSkillsInput = {
   job?: Prisma.StringFieldUpdateOperationsInput | string
   rarity?: Prisma.IntFieldUpdateOperationsInput | number
   range?: Prisma.IntFieldUpdateOperationsInput | number
+  radius?: Prisma.IntFieldUpdateOperationsInput | number
   cooldown?: Prisma.StringFieldUpdateOperationsInput | string
   costMp?: Prisma.StringFieldUpdateOperationsInput | string
   icon?: Prisma.StringFieldUpdateOperationsInput | string
@@ -761,6 +793,7 @@ export type SkillSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = 
   job?: boolean
   rarity?: boolean
   range?: boolean
+  radius?: boolean
   cooldown?: boolean
   costMp?: boolean
   icon?: boolean
@@ -784,6 +817,7 @@ export type SkillSelectScalar = {
   job?: boolean
   rarity?: boolean
   range?: boolean
+  radius?: boolean
   cooldown?: boolean
   costMp?: boolean
   icon?: boolean
@@ -795,7 +829,7 @@ export type SkillSelectScalar = {
   deletedAt?: boolean
 }
 
-export type SkillOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "name" | "type" | "desc" | "job" | "rarity" | "range" | "cooldown" | "costMp" | "icon" | "sort" | "effects" | "effectsDesc" | "createdAt" | "updatedAt" | "deletedAt", ExtArgs["result"]["skill"]>
+export type SkillOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "name" | "type" | "desc" | "job" | "rarity" | "range" | "radius" | "cooldown" | "costMp" | "icon" | "sort" | "effects" | "effectsDesc" | "createdAt" | "updatedAt" | "deletedAt", ExtArgs["result"]["skill"]>
 export type SkillInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   playerSkills?: boolean | Prisma.Skill$playerSkillsArgs<ExtArgs>
   _count?: boolean | Prisma.SkillCountOutputTypeDefaultArgs<ExtArgs>
@@ -814,6 +848,7 @@ export type $SkillPayload<ExtArgs extends runtime.Types.Extensions.InternalArgs 
     job: string
     rarity: number
     range: number
+    radius: number
     cooldown: string
     costMp: string
     icon: string
@@ -1200,6 +1235,7 @@ export interface SkillFieldRefs {
   readonly job: Prisma.FieldRef<"Skill", 'String'>
   readonly rarity: Prisma.FieldRef<"Skill", 'Int'>
   readonly range: Prisma.FieldRef<"Skill", 'Int'>
+  readonly radius: Prisma.FieldRef<"Skill", 'Int'>
   readonly cooldown: Prisma.FieldRef<"Skill", 'String'>
   readonly costMp: Prisma.FieldRef<"Skill", 'String'>
   readonly icon: Prisma.FieldRef<"Skill", 'String'>

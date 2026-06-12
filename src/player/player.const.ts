@@ -1,6 +1,8 @@
 export enum UnitType {
   PLAYER = 'player',
   MONSTER = 'monster',
+  // 召唤单位
+  SUMMON = 'summon',
 }
 
 export enum Job {
