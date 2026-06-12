@@ -35,6 +35,8 @@ export const SkillEffectTypeSchema = z.enum([
   'summon',
   // 持续伤害
   'dot',
+  // 眩晕
+  'stun',
 ]);
 
 export type SkillEffectType = z.infer<typeof SkillEffectTypeSchema>;
